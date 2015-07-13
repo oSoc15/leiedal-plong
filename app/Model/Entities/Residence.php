@@ -23,10 +23,17 @@ class Residence extends \Identifier {
      */
     private $_latitude;
     
-    public function __construct($longitude = 0, $latitude = 0) {
+    /**
+     * The info supplied about this residence stored in a associative array with
+     * the questionId as key and the answerId as value.
+     * @var array   The given input for each question. 
+     */
+    private $_info;
+    
+    public function __construct($longitude = 0, $latitude = 0, $info = array()) {
         $this->_latitude = $latitude;
         $this->_longitude = $longitude;
-        //TODO: implementation
+        $this->_info = $info;
     }
     
     /**
@@ -60,5 +67,22 @@ class Residence extends \Identifier {
     public function setLatitude($latitude){
         $this->_latitude = $latitude;
     }
+    
+    /**
+     * A method which returns all the answered question about this residence.
+     * @return array with the questionId as key and the answerId as value.
+     */
+    public function getAllInfo(){
+        return $this->_info;
+    }
+    
+    /**
+     * A method which returns the answer given to a given question.
+     * @param Integer $questionId The id of the question you want
+     */
+    public function getInfo($questionId){
+        return $this->_info[$questionId];
+    }
+    
     
 }
