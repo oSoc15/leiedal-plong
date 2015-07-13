@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Model\Entities;
 
 /**
  * This class is the respresentation of a question which can be asked to 
