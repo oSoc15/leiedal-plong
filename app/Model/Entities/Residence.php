@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Model\Entities;
 
 /**
  * This class represents the residence of the user. Each question that is 
