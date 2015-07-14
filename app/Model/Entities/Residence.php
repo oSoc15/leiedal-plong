@@ -29,7 +29,7 @@ class Residence extends \Identifier {
      * @var array   The given input for each question. 
      */
     private $_info;
-
+    
     public function __construct($longitude = 0, $latitude = 0, $info = array()) {
         $this->_latitude = $latitude;
         $this->_longitude = $longitude;
@@ -69,6 +69,15 @@ class Residence extends \Identifier {
     }
 
     /**
+     * A method which answers a question about the residence
+     * @param Integer $qid The id of the question answered
+     * @param Integer $aid The id of the answer given
+     */
+    public function addInfo($qid, $aid) {
+        $this->_info[$qid] = $aid;
+    }
+
+    /**
      * A method which returns all the answered question about this residence.
      * @return array with the questionId as key and the answerId as value.
      */
@@ -83,5 +92,5 @@ class Residence extends \Identifier {
     public function getInfo($questionId) {
         return $this->_info[$questionId];
     }
-
+    
 }
