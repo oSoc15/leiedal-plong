@@ -70,6 +70,9 @@ class ResidenceRepository implements IRepository {
      * The method to delete a residence from the repository. 
      */
     public function delete($residenceId) {
+        if(empty($residenceId)){
+            throw new Exception("NO SUCH RESIDENCE IN THE REPOSITORY");
+        }
         unset($this->_residences[$residenceId]);
     }
 

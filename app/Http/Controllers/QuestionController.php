@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 
 class QuestionController extends Controller
 {
+        
     /**
      * Display a listing of the resource.
      *
@@ -26,7 +27,7 @@ class QuestionController extends Controller
      */
     public function create()
     {
-        //
+        //TODO
     }
 
     /**
