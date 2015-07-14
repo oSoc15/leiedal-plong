@@ -1,3 +1,3 @@
 <?php
 
-Route::get('Resource');
+Route::resource('question', 'QuestionController', ['only' => ['index', 'show']]);

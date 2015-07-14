@@ -9,20 +9,8 @@ use Illuminate\Database\Eloquent\Model;
  */
 class QuestionType extends Model
 {
-    
-    /**
-     * This defines the id for the yes-noquestion.
-     */
-    const YES_NO = 1;
-    
-    /**
-     * This defines the id for the buttons-typequestion.
-     */
-    const BUTTONS = 2;
-    
-    /**
-     * This defines the id for the slider-typequestion.
-     */
-    const SLIDER = 3;
-    
+
+    protected $table = ['question_types'];
+
+    protected $fillable = ['type'];
 }
