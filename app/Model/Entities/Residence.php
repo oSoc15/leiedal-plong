@@ -69,6 +69,15 @@ class Residence extends \Identifier {
     }
 
     /**
+     * A method which answers a question about the residence
+     * @param Integer $qid The id of the question answered
+     * @param Integer $aid The id of the answer given
+     */
+    public function addInfo($qid, $aid) {
+        $this->_info[$qid] = $aid;
+    }
+
+    /**
      * A method which returns all the answered question about this residence.
      * @return array with the questionId as key and the answerId as value.
      */
