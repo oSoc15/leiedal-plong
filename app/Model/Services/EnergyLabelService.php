@@ -25,10 +25,17 @@ class EnergyLabelService {
      */
     private $_residenceRepository;
 
+    /**
+     * The class which provides the Strategy approach to calculate the energyLabelValue.
+     * @var ILabelCalculator
+     */
+    private $_labelCalculator;
+
     public function __construct() {
         $this->_questionRepository = \QuestionRepository::getInstance();
         $this->_answerRepository = \AnswerRepository::getInstance();
         $this->_residenceRepository = \ResidenceRepository::getInstance();
+        $this->_labelCalculator = new SimpleLabelCalculator();
     }
 
     /**
@@ -81,26 +88,62 @@ class EnergyLabelService {
     }
 
     /**
-     * The method to add an question to the repository.
+     * The method to delete an answer from the repository.
      */
-    public function deleteAnswer() {
+    public function deleteAnswer($answerId) {
         $this->_answerRepository->delete($answerId);
     }
 
-    public function addResidence() {
+    /**
+     * The method to add a residence to the repository.
+     */
+    public function addResidence($residence) {
         $this->_residenceRepository->add($residence);
     }
 
+    /**
+     * The method which returns the residence object with that certain id.
+     * @param Integer $residenceId The id of the residence
+     * @return Residence The residence for the given id 
+     */
     public function getResidence($residenceId) {
         return $this->_residenceRepository->get($residenceId);
     }
 
+    /**
+     * The method which return all the residences in the repository.
+     * @return array
+     */
     public function getAllResidences() {
         return $this->_residenceRepository->getAll();
     }
 
+    /**
+     * The method which removes a residence from the repository.
+     * @param Integer $residenceId The id of the residence to be removed
+     */
     public function deleteResidences($residenceId) {
         $this->_residenceRepository->delete($residenceId);
     }
 
+    /**
+     * A method which adds the information from an answered question to the
+     * residence.
+     * @param Residence $rid The id of the residence
+     * @param Integer $qid  The id of the question
+     * @param Integer $aid  The id of the answer
+     */
+    public function answerQuestion($rid, $qid, $aid){
+        $this->getResidence($rid)->addInfo($qid, $aid);
+    }
+    
+    /**
+     * The Strategy method which calculates the value for the energylabel.
+     * @param Integer $rid The id of the residence
+     * @return double The value for the energylabel
+     */
+    public function calculateEnergyLabel($rid){
+        return $this->_labelCalculator->calculateLabel($this->getResidence($rid), $this->getAllQuestions(), $this->getAllQuestions());
+    }
+    
 }

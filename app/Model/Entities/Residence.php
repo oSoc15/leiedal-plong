@@ -29,7 +29,7 @@ class Residence extends \Identifier {
      * @var array   The given input for each question. 
      */
     private $_info;
-
+    
     public function __construct($longitude = 0, $latitude = 0, $info = array()) {
         $this->_latitude = $latitude;
         $this->_longitude = $longitude;
@@ -92,5 +92,5 @@ class Residence extends \Identifier {
     public function getInfo($questionId) {
         return $this->_info[$questionId];
     }
-
+    
 }
