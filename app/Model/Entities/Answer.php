@@ -23,11 +23,18 @@ class Answer extends \Identifier {
     private $_subquestion;
 
     /**
+     * The image which represents the answer in a graphical way.
+     * @var String The url to the image used according this answer. 
+     */
+    private $_image;
+    
+    /**
      * The constructor for an Answer
      * @param String $answer The sentence which is the answer
      */
-    public function __construct($answer = 'BEST ANSWER EVER') {
+    public function __construct($answer = 'BEST ANSWER EVER', $subquestion = '') {
         $this->_answer = $answer;
+        $this->_subquestion = $subquestion;
     }
 
     /**
@@ -50,7 +57,7 @@ class Answer extends \Identifier {
      * The getter for the subquestion of this answer.
      * @return Question The subquestion which follows up on this answer.
      */
-    public function get_subquestion() {
+    public function getSubquestion() {
         return $this->_subquestion;
     }
 
@@ -59,8 +66,24 @@ class Answer extends \Identifier {
      * 
      * @param Question $_subquestion The subquestion which follows up onto this answer.
      */
-    public function set_subquestion($_subquestion) {
+    public function setSubquestion($_subquestion) {
         $this->_subquestion = $_subquestion;
     }
 
+    /**
+     * The getter for the image of the answer.
+     * @return String The url of the image of the answer.
+     */
+    public function getImage(){
+        return $this->_image;
+    }
+    
+    /**
+     * The setter for the image of the answer.
+     * @param String $url The link to the image of the answer
+     */
+    public function setImage($url){
+        $this->_image = $url;
+    }
+    
 }

@@ -46,6 +46,9 @@ class ResidenceRepository implements IRepository {
      * The method to add an residence to the repository.
      */
     public function add($residence) {
+        if(empty($residence)){
+            throw new Exception("NULL OBJECT RESIDENCE SPECIFIED");
+        }
         $this->_residences[$residence->getId()] = $residence;
     }
 
