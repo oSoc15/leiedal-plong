@@ -3,6 +3,7 @@
 namespace app\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Model\Entities\Question;
 
 class QuestionController extends Controller
 {
@@ -13,7 +14,7 @@ class QuestionController extends Controller
      */
     public function index()
     {
-        //
+       dd(Question::all()); 
     }
 
     /**

@@ -12,7 +12,7 @@ class CreateQuestiontypeTable extends Migration
     {
         Schema::create('question_types', function (Blueprint $table) {
             $table->increments('id');
-            $table->enum('type', array('YES_NO', 'BUTTON', 'SLIDER'));
+            $table->string('type');
             $table->timestamps();
         });
     }

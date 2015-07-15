@@ -2,11 +2,21 @@
 
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
-use App\Model\Entities\Question;
-use App\Model\Entities\QuestionType;
 
 class DatabaseSeeder extends Seeder
 {
+    protected $tables = [
+        'question_answer',
+        'question_types',
+        'questions',
+        'answers',
+    ];
+
+    protected $seeders = [
+        'QuestionTypeTableSeeder',
+        'QuestionAnswerTableSeeder',
+    ];
+
     /**
      * Run the database seeds.
      */
@@ -14,47 +24,20 @@ class DatabaseSeeder extends Seeder
     {
         Model::unguard();
 
-        $this->call('QuestionTypeTableSeeder');
-        $this->command->info('QuestionTypes are seeded');
-        $this->call('QuestionAnswerTableSeeder');
-        $this->command->info('Question and answers are seeded');
-    }
-}
+        $this->cleanDatabase();
 
-/**
- * QuestionTypeTableSeeder.
- */
-class QuestionTypeTableSeeder extends Seeder
-{
-    /**
-     * Run the seeder.
-     */
-    public function run()
-    {
-        $types = array('YES_NO', 'BUTTON', 'SLIDER');
-        foreach ($types as $type) {
-            QuestionType::create(array(
-                'type' => $type,
-            ));
+        foreach ($this->seeders as $seeder) {
+            $this->call($seeder);
         }
-    }
-}
 
-/**
- * QuestionAnswerTableSeeder.
- */
-class QuestionAnswerTableSeeder extends Seeder
-{
-    /**
-     * Run the seeder.
-     */
-    public function run()
+    }
+
+    public function cleanDatabase()
     {
-        Question::create(array(
-            'title' => 'Mijn vloer is',
-            'description' => 'Isolatie via het kelderplafond is zichtbaar in je kelder. Werd je vloer geïsoleerd op volle grond, dan ligt je vloerbedekking meestal iets hoger.',
-            'input' => false,
-            'question_type' => 1,
-        ));
+        DB::statement('SET FOREIGN_KEY_CHECKS=0');
+        foreach ($this->tables as $table) {
+            DB::table($table)->truncate();
+        }
+        DB::statement('SET FOREIGN_KEY_CHECKS=1');
     }
 }
