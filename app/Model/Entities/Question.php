@@ -17,6 +17,6 @@ class Question extends Eloquent
 
     public function answers()
     {
-        return $this->belongsToMany('App\Model\Entities\Answer');
+        return $this->hasMany('App\Model\Entities\Answer');
     }
 }

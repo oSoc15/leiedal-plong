@@ -6,7 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 class DatabaseSeeder extends Seeder
 {
     protected $tables = [
-        'question_answer',
         'question_types',
         'questions',
         'answers',

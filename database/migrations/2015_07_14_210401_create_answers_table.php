@@ -15,6 +15,8 @@ class CreateAnswersTable extends Migration
             $table->string('title');
             $table->string('image');
             $table->integer('weight');
+            $table->integer('question_id')->unsigned()->index();
+            $table->foreign('question_id')->references('id')->on('questions')->onDelete('cascade');
             $table->timestamps();
         });
     }

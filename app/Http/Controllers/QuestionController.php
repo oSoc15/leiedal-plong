@@ -4,6 +4,7 @@ namespace app\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Model\Entities\Question;
+use Illuminate\Http\Response;
 
 class QuestionController extends Controller
 {
@@ -14,7 +15,7 @@ class QuestionController extends Controller
      */
     public function index()
     {
-       dd(Question::all()); 
+        return response()->json(Question::all());
     }
 
     /**
@@ -26,6 +27,6 @@ class QuestionController extends Controller
      */
     public function show($id)
     {
-        //
+        return response()->json(Question::findOrFail($id)->with('answers')->get());
     }
 }

@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Exceptions;
+namespace app\Exceptions;
 
 use Exception;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Http\Response;
 
 class Handler extends ExceptionHandler
 {
@@ -22,8 +23,7 @@ class Handler extends ExceptionHandler
      *
      * This is a great spot to send exceptions to Sentry, Bugsnag, etc.
      *
-     * @param  \Exception  $e
-     * @return void
+     * @param \Exception $e
      */
     public function report(Exception $e)
     {
@@ -33,12 +33,25 @@ class Handler extends ExceptionHandler
     /**
      * Render an exception into an HTTP response.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Exception  $e
+     * @param \Illuminate\Http\Request $request
+     * @param \Exception               $e
+     *
      * @return \Illuminate\Http\Response
      */
     public function render($request, Exception $e)
     {
+        if ($e instanceof \Illuminate\Database\Eloquent\ModelNotFoundException) {
+            $error_json = new \stdClass();
+            $error_json->error = new \stdClass();
+            $error_json->error->type = 'invalid_request_error';
+            // TODO: add description of which resource is not found
+            $error_json->error->message = $e->getMessage();
+            return response()
+                ->json($error_json)
+                ->setStatusCode(404)
+                ->header('Access-Control-Allow-Origin', '*');
+        }
+
         return parent::render($request, $e);
     }
 }
