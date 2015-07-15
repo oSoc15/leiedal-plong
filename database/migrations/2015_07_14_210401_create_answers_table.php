@@ -7,12 +7,10 @@ class CreateAnswersTable extends Migration
 {
     /**
      * Run the migrations.
-     *
-     * @return void
      */
     public function up()
     {
-       Schema::create('answers', function (Blueprint $table) {
+        Schema::create('answers', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title');
             $table->string('image');
@@ -23,8 +21,6 @@ class CreateAnswersTable extends Migration
 
     /**
      * Reverse the migrations.
-     *
-     * @return void
      */
     public function down()
     {

@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Model\Entities;
+namespace app\Model\Entities;
 
 use Illuminate\Database\Eloquent\Model as Eloquent;
 
-class Question extends Eloquent {
-
+class Question extends Eloquent
+{
     protected $table = 'questions';
 
     protected $fillable = ['title' , 'description', 'input'];

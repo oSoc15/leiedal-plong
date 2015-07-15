@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Model\Entities;
+namespace app\Model\Entities;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -9,7 +9,6 @@ use Illuminate\Database\Eloquent\Model;
  */
 class QuestionType extends Model
 {
-
     protected $table = ['question_types'];
 
     protected $fillable = ['type'];
