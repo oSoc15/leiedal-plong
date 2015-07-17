@@ -3,7 +3,8 @@
 namespace app\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Model\Entities\Question;
+use App\Models\Question;
+use App\Models\QuestionType;
 use Illuminate\Http\Response;
 
 class QuestionController extends Controller
@@ -27,6 +28,6 @@ class QuestionController extends Controller
      */
     public function show($id)
     {
-        return response()->json(Question::findOrFail($id)->with('answers')->get());
+        return Question::findOrFail($id)->with('answers')->where('id', $id)->get();
     }
 }

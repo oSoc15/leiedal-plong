@@ -1,6 +1,6 @@
 <?php
 
-namespace app\Model\Entities;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model as Eloquent;
 
@@ -10,8 +10,11 @@ class Answer extends Eloquent
 
     protected $fillable = ['title', 'image', 'weight'];
 
+    public $timestamps = false;
+
     public function questions()
     {
-        return $this->belongsToMany('App\Model\Entities\Question');
+        return $this->belongsToMany('App\Models\Question');
     }
+
 }

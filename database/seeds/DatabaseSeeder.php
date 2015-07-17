@@ -7,12 +7,14 @@ class DatabaseSeeder extends Seeder
 {
     protected $tables = [
         'question_types',
+        'sections',
         'questions',
         'answers',
     ];
 
     protected $seeders = [
         'QuestionTypeTableSeeder',
+        'SectionTableSeeder',
         'QuestionAnswerTableSeeder',
     ];
 

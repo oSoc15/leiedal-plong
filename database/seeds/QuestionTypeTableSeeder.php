@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
-use App\Model\Entities\QuestionType;
+use App\Models\QuestionType;
 
 /**
  * QuestionTypeTableSeeder.
@@ -14,9 +14,9 @@ class QuestionTypeTableSeeder extends Seeder
      */
     public function run()
     {
-        $types = array('YES_NO', 'BUTTON', 'SLIDER');
+        $types = array('yes_no', 'button', 'slider', 'input');
         foreach ($types as $type) {
-            QuestionType::create(array(
+            questiontype::create(array(
                 'type' => $type
             ));
         }

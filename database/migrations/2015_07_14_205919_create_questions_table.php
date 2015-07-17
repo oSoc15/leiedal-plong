@@ -10,14 +10,15 @@ class CreateQuestionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('questions', function (Blueprint $table) {
+        Schema::create('questions', function (blueprint $table) {
             $table->increments('id');
             $table->string('title');
+            $table->boolean('unknown');
             $table->text('description');
-            $table->boolean('input');
-            $table->integer('question_type')->unsigned()->index();
-            $table->foreign('question_type')->references('id')->on('question_types')->onDelete('cascade');
-            $table->timestamps();
+            $table->integer('from')->nullable();
+            $table->integer('till')->nullable();
+            $table->integer('question_type')->unsigned();
+            $table->foreign('question_type')->references('id')->on('question_types')->ondelete('cascade');
         });
     }
 

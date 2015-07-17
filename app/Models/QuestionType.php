@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Model\Entities;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model as Eloquent;
 
@@ -12,4 +12,6 @@ class QuestionType extends Eloquent
     protected $table = 'question_types';
 
     protected $fillable = ['type'];
+
+    public $timestamps = false;
 }

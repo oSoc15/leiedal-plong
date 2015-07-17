@@ -45,7 +45,7 @@ class Handler extends ExceptionHandler
             $error_json->error = new \stdClass();
             $error_json->error->type = 'invalid_request_error';
             // TODO: add description of which resource is not found
-            $error_json->error->message = $e->getMessage();
+            $error_json->error->message = 'The resource could not be found';
             return response()
                 ->json($error_json)
                 ->setStatusCode(404)
