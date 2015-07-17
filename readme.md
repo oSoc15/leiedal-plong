@@ -20,4 +20,42 @@ For partner [Leiedal](http://www.leiedal.be/).
 
 ---
 
+### API Routes
+
+#### GET /api/sections
+
+This shows all the sections of the API.
+The sections consist of multiple questions.
+
+#### GET /api/sections/id
+
+Gives the specific information of the section.
+
+
+#### GET /api/questions
+
+This shows all the questions in the API.
+A question consist of multiple answers.
+
+#### GET /api/questions/id
+
+Gives the specific information of the section.
+The answers bound to this question will also be shown.
+
+
+#### POST/api/residence
+
+Creates a residence.
+
+parameters:
+
+- city 
+- postalCode
+- street
+- number
+- lat
+- long
+
+
+
 This project uses the [laravel framework](https://github.com/laravel/framework).
