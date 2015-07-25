@@ -14,13 +14,14 @@ class CreateResidenceTable extends Migration
     {
         Schema::create('residences', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('street');
-            $table->string('city');
+            $table->string('street')->required();
+            $table->string('city')->required();
             $table->string('ecolabel')->nullable();
-            $table->integer('postalCode');
-            $table->integer('number');
+            $table->integer('postalCode')->required();
+            $table->integer('number')->required();
             $table->float('lat');
             $table->float('lon');
+            $table->timestamps();
         });
     }
 

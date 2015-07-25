@@ -2,11 +2,14 @@
 
 namespace App\Models;
 
-class Residence
-{
+use Illuminate\Database\Eloquent\Model as Eloquent;
 
-    protected $table = 'questions';
+class Residence extends Eloquent
+{
+    protected $table = 'residences';
 
     protected $fillable = ['postalCode' , 'city', 'street', 'number', 'lat', 'lon'];
+
+    protected $hidden = ['id'];
 
 }

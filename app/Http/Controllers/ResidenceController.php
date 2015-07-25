@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
-use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CreateResidenceRequest;
+use App\Models\Residence;
 
 class ResidenceController extends Controller
 {
@@ -15,23 +17,13 @@ class ResidenceController extends Controller
      * @param  Request  $request
      * @return Response
      */
-    public function store(Request $request)
+    public function store(CreateResidenceRequest $request)
     {
-        $input = request->all();
-        $residence = new Residence;
-        $residence->street = $input('street');
-        $residence->city = $input('city');
-        $residence->postalCode = $input('postalCode');
-        $residence->number = $input('number');
-        $residence->lat = $input('lat');
-        $residence->long = $input('long');
+        $residence = Residence::firstOrCreate($request->all());
 
-        $residence->save();
-
-        return Response::json(array(
+        return response()->json(array(
             'error' => false,
-            'residence' => $residence->toArray(),
-            200
+            'residence' => $residence
         ));
     }
 }
