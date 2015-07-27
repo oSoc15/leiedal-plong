@@ -8,11 +8,11 @@ class Question extends Eloquent
 {
     protected $table = 'questions';
 
-    protected $fillable = ['title' , 'description', 'unknown'];
+    protected $fillable = ['title' , 'description', 'unknown', 'next_question'];
 
-    protected $hidden = ['question_type'];
+    protected $hidden = ['question_type', 'section_id'];
 
-    protected $appends = ['type'];
+    protected $appends = ['type', 'section'];
 
     public $timestamps = false;
 
@@ -21,7 +21,7 @@ class Question extends Eloquent
         return $this->hasMany('App\Models\Answer');
     }
 
-    public function question_type()
+    public function questionType()
     {
         return $this->hasOne('App\Models\QuestionType');
     }
@@ -29,5 +29,20 @@ class Question extends Eloquent
     public function getTypeAttribute()
     {
         return QuestionType::find($this->question_type)->getAttribute('type');
+    }
+
+    public function nextQuestion()
+    {
+        return $this->hasOne('App\Models\Question');
+    }
+
+    public function getNextQuestion()
+    {
+        return Question::find($this->next_question);
+    }
+
+    public function getSectionAttribute()
+    {
+        return Section::find($this->section_id)->getAttribute('title');
     }
 }

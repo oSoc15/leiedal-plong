@@ -31,5 +31,4 @@ class SectionController extends Controller
     {
         return response()->json(Section::findOrFail($id));
     }
-
 }

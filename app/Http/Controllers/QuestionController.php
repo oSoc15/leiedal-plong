@@ -17,6 +17,7 @@ class QuestionController extends Controller
      */
     public function index()
     {
+        dd(Question::all());
         return response()->json(Question::all());
     }
 
@@ -29,6 +30,6 @@ class QuestionController extends Controller
      */
     public function show($id)
     {
-        return Question::findOrFail($id)->with('answers')->where('id', $id)->get();
+        return Question::findOrFail($id)->load('answers');
     }
 }

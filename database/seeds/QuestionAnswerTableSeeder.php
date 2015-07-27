@@ -23,11 +23,12 @@ class QuestionAnswerTableSeeder extends Seeder
         // Gebouw
         $section = Section::find(1);
 
-        $question = Question::create(array(
+        $question1 = Question::create(array(
             'title' => 'Soort',
             'description' => 'Welke soort bebouwing heeft u',
             'unknown' => true,
-            'question_type' => 2
+            'question_type' => 2,
+            'next_question' => 2
         ));
 
         $answers = [
@@ -49,30 +50,32 @@ class QuestionAnswerTableSeeder extends Seeder
         ];
 
         foreach ($answers as $answer) {
-            $question->answers()->save($answer);
+            $question1->answers()->save($answer);
         }
 
-        $section->questions()->save($question);
+        $section->questions()->save($question1);
 
         // Isolatie
         $section = Section::find(2);
 
-        $question = Question::create(array(
+        $question2 = Question::create(array(
             'title' => 'Kelder',
             'description' => 'Heeft u een kelder?',
             'unknown' => true,
-            'question_type' => 1,
+            'question_type' => 4,
+            'next_question' => 3
         ));
 
-        $section->questions()->save($question);
+        $section->questions()->save($question2);
 
         $section = Section::find(3);
 
-        $question = Question::create(array(
+        $question3 = Question::create(array(
             'title' => 'Renovatie',
             'description' => 'Wanneer was de laatste renovatie van uw woonst?',
             'unknown' => true,
             'question_type' => 3,
+            'next_question' => 4
         ));
 
         $answers = [
@@ -104,13 +107,13 @@ class QuestionAnswerTableSeeder extends Seeder
         ];
 
         foreach ($answers as $answer) {
-            $question->answers()->save($answer);
+            $question3->answers()->save($answer);
         }
-        $section->questions()->save($question);
+        $section->questions()->save($question3);
 
         $section = Section::find(3);
 
-        $question = Question::create(array(
+        $question4 = Question::create(array(
             'title' => 'Hernieuwbare energie',
             'description' => 'Maakt u gebruik van hernieuwbare energie?',
             'unknown' => true,
@@ -130,9 +133,9 @@ class QuestionAnswerTableSeeder extends Seeder
         ];
 
         foreach ($answers as $answer) {
-            $question->answers()->save($answer);
+            $question4->answers()->save($answer);
         }
-        $section->questions()->save($question);
+        $section->questions()->save($question4);
 
         DB::statement('SET FOREIGN_KEY_CHECKS=1;');
     }
