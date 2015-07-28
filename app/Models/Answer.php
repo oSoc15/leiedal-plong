@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model as Eloquent;
-use Vinkla\Hashids\Facades\Hashids;
 
 class Answer extends Eloquent
 {
