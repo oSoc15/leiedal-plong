@@ -49,13 +49,27 @@ Creates a residence.
 
 parameters:
 
-- city 
-- postalCode
-- street
-- number
-- lat
-- long
+- city : string
+- postalCode : integer
+- street : string
+- number : integer
+- lat : float
+- long : float
 
+This returns the instance of residence with all attributes with the provided hashids for identification.
 
+#### POST/api/residence/reply
+
+Post the choosen answer to the question. 
+
+parameters:
+
+- residence (the returned hashids when you created the residence) : string
+- question (the id of the current question) : integer
+- answer (the id of the choosen answer) : integer
+- unknown (has the user choosen the 'Weet ik niet' reply) : boolean
+- input (the input from the user, set answer and unknown to null)
+
+Returns the updated residence, the current question and the possible answers.
 
 This project uses the [laravel framework](https://github.com/laravel/framework).

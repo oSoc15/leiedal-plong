@@ -29,6 +29,6 @@ class SectionController extends Controller
      */
     public function show($id)
     {
-        return response()->json(Section::findOrFail($id));
+        return response()->json(Section::findOrFail($id))->load('questions');
     }
 }
