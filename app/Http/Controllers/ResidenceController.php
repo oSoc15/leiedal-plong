@@ -1,6 +1,6 @@
 <?php
 
-namespace app\Http\Controllers;
+namespace App\Http\Controllers;
 
 use Validator;
 use Illuminate\Http\Request;
@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Residence;
 use App\Models\Question;
 use App\Models\Answer;
+use App\Models\Reply;
 use Vinkla\Hashids\Facades\Hashids;
 
 class ResidenceController extends Controller
@@ -62,15 +63,12 @@ class ResidenceController extends Controller
         return Residence::findOrFail($id);
     }
 
-    public function response(Request $request)
+    public function reply(Request $request)
     {
-        $data = $request->all();
-
-        $validator = Validator::make($data, [
+        $validator = Validator::make($request->all(), [
             'residence' => 'required',
-            'answer' => 'required',
             'question' => 'required',
-            'unknown' => 'required',
+            'unknown' => 'required'
         ]);
 
         if ($validator->fails()) {
@@ -80,14 +78,25 @@ class ResidenceController extends Controller
             ));
         }
 
-        $residence = Residence::findOrFail(Hashids::decode($data['residence']))[0];
-        // TODO: look for the answers in the questions, not on the whole collection
-        $answer = Answer::findOrFail(Hashids::decode($data['answer']))[0];
-        $question = Question::findOrFail($data['question']);
+        // check if there is an already a reply to this question
+        $oldReply = Reply::whereHas('question', function ($q) use ($request) {
+            $q->where('question_id', $request->input('question'));
+        })->first();
 
+        // find the corresponding residence and question
+        $residence = Residence::findOrFail(Hashids::decode($request->input('residence')))->first();
+        $question = Question::findOrFail($request->input('question'));
+
+        if (count($oldReply)) {
+            $reply = $oldReply->fillReply($request->all());
+        } else {
+            $reply = new Reply();
+            $reply = $reply->fillReply($request->all());
+            $reply->question()->associate($question);
+        }
+
+        $residence->replies()->save($reply);
         $nextQuestion = Question::findOrFail($question->next_question)->load('answers');
-
-        $residence->answers()->save($answer);
 
         return response()->json(array(
             'residence' => $residence,

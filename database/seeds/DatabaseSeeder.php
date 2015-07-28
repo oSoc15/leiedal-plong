@@ -16,6 +16,7 @@ class DatabaseSeeder extends Seeder
         'QuestionTypeTableSeeder',
         'SectionTableSeeder',
         'QuestionAnswerTableSeeder',
+        'ResidenceTableSeeder'
     ];
 
     /**
