@@ -1,6 +1,6 @@
 <?php
 
-namespace app\Http\Controllers;
+namespace App\Http\Controllers;
 
 use Illuminate\Http\Response;
 
@@ -17,7 +17,6 @@ class QuestionController extends Controller
      */
     public function index()
     {
-        dd(Question::all());
         return response()->json(Question::all());
     }
 
