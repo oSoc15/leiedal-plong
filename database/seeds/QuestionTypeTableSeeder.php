@@ -14,9 +14,9 @@ class QuestionTypeTableSeeder extends Seeder
      */
     public function run()
     {
-        $types = array('yes_no', 'button', 'slider', 'input');
+        $types = array('yes_no', 'button', 'slider', 'input', 'multi');
         foreach ($types as $type) {
-            questiontype::create(array(
+            $test = QuestionType::create(array(
                 'type' => $type
             ));
         }

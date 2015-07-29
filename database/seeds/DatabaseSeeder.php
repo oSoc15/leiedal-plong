@@ -10,11 +10,12 @@ class DatabaseSeeder extends Seeder
         'sections',
         'questions',
         'answers',
+        'replies',
+        'residences'
     ];
 
     protected $seeders = [
         'QuestionTypeTableSeeder',
-        'SectionTableSeeder',
         'QuestionAnswerTableSeeder',
         'ResidenceTableSeeder'
     ];

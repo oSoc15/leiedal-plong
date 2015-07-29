@@ -16,11 +16,6 @@ class Question extends Eloquent
 
     public $timestamps = false;
 
-    public function residences()
-    {
-        return $this->belongsToMany('App\Models\Residence');
-    }
-
     public function answers()
     {
         return $this->hasMany('App\Models\Answer');
@@ -29,6 +24,11 @@ class Question extends Eloquent
     public function questionType()
     {
         return $this->hasOne('App\Models\QuestionType');
+    }
+
+    public function reply()
+    {
+        return $this->belongsTo('App\Models\Reply');
     }
 
     public function getTypeAttribute()

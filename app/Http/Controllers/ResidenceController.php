@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Residence;
 use App\Models\Question;
 use App\Models\Answer;
+use App\Models\RealAnswer;
 use App\Models\Reply;
 use Vinkla\Hashids\Facades\Hashids;
 
@@ -27,9 +28,6 @@ class ResidenceController extends Controller
             'street' => 'required',
             'city' => 'required',
             'number' => 'required',
-            'postalCode' => 'required',
-            'lat' => 'required',
-            'lon' => 'required',
         ]);
 
         if ($validator->fails()) {
@@ -60,7 +58,7 @@ class ResidenceController extends Controller
      */
     public function show($id)
     {
-        return Residence::findOrFail($id);
+        return Residence::findOrFail(Hashids::decode($id));
     }
 
     public function reply(Request $request)
@@ -78,24 +76,35 @@ class ResidenceController extends Controller
             ));
         }
 
-        // check if there is an already a reply to this question
-        $oldReply = Reply::whereHas('question', function ($q) use ($request) {
-            $q->where('question_id', $request->input('question'));
-        })->first();
-
         // find the corresponding residence and question
         $residence = Residence::findOrFail(Hashids::decode($request->input('residence')))->first();
         $question = Question::findOrFail($request->input('question'));
 
-        if (count($oldReply)) {
-            $reply = $oldReply->fillReply($request->all());
-        } else {
-            $reply = new Reply();
-            $reply = $reply->fillReply($request->all());
-            $reply->question()->associate($question);
+        $reply = new Reply();
+        $reply->question_id = $question->id;
+        $reply->save();
+
+        $question->reply()->associate($reply);
+        $residence->replies()->save($reply);
+
+        if ($request->input('answers')) {
+            foreach ($request->input('answers') as $answer) {
+                // fetch the answer of the reply
+                $found = Answer::findOrFail($answer['answer']);
+
+                // fill the real_answer
+                $real_answer = new RealAnswer();
+                $real_answer->input = $request->input('input');
+                $real_answer->unknown = $request->input('unknown');
+                $real_answer->answer_id = $found->id;
+
+                // persist answer
+                $reply->real_answers()->save($real_answer);
+            }
         }
 
-        $residence->replies()->save($reply);
+        $reply->save();
+
         $nextQuestion = Question::findOrFail($question->next_question)->load('answers');
 
         return response()->json(array(

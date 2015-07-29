@@ -12,8 +12,18 @@ class Answer extends Eloquent
 
     public $timestamps = false;
 
-    public function questions()
+    public function question()
     {
-        return $this->belongsToMany('App\Models\Question');
+        return $this->belongsTo('App\Models\Question');
+    }
+
+    public function reply()
+    {
+        return $this->belongsTo('App\Models\Reply');
+    }
+
+    public function real_answer()
+    {
+        return $this->belongsTo('App\Models\RealAnswer');
     }
 }

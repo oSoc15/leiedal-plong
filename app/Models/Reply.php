@@ -10,26 +10,13 @@ class Reply extends Eloquent
 
     protected $fillable = ['unknown', 'input'];
 
+    public function real_answers()
+    {
+        return $this->hasMany('App\Models\RealAnswer');
+    }
+
     public function question()
     {
-        return $this->belongsTo('App\Models\Question');
-    }
-
-    public function answer()
-    {
-        return $this->belongsTo('App\Models\Answer');
-    }
-
-    public function fillReply($data)
-    {
-        if ($data['answer']) {
-            $answer = Answer::findOrFail($data['answer']);
-            $this->answer()->associate($answer);
-        }
-
-        $this->unknown = $data['unknown'];
-        $this->input = $data['input'];
-
-        return $this;
+        return $this->hasOne('App\Models\Question');
     }
 }
