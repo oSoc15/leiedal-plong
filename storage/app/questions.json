@@ -3,65 +3,14 @@
         "title": "Gebouw",
         "questions": [
             {
-                "title": "Groote/Oppervlakte",
-                "unknown": 1,
-                "description": "Hoe groot is uw huis?",
-                "from": null,
-                "till": null,
-                "next_question": 2,
-                "type": 2,
-                "answers": [
-                    {
-                        "title": "Klein",
-                        "image": "",
-                        "weight": 1
-                    },
-                    {
-                        "title": "Middelmatig",
-                        "image": "",
-                        "weight": 1
-                    },
-                    {
-                        "title": "Groot",
-                        "image": "",
-                        "weight": 1
-                    }
-                ]
-            },
-            {
-                "title": "Soort",
-                "unknown": 1,
-                "description": "Welke soort bebouwing heeft u",
-                "from": null,
-                "till": null,
-                "next_question": 3,
-                "type": 2,
-                "answers": [
-                    {
-                        "title": "Open bebouwing",
-                        "image": "",
-                        "weight": 1
-                    },
-                    {
-                        "title": "Halfopen bebouwing",
-                        "image": "",
-                        "weight": 1
-                    },
-                    {
-                        "title": "Gesloten bebouwing",
-                        "image": "",
-                        "weight": 1
-                    }
-                ]
-            },
-            {
-                "title": "Hoogte/Verdiepingen",
+                "title": "f",
                 "unknown": 1,
                 "description": "Hoeveel verdiepingen telt uw huis?",
                 "from": null,
                 "till": null,
                 "next_question": 4,
                 "type": 2,
+                "ignore": false,
                 "answers": [
                     {
                         "title": "Enkel gelijkvloers",
@@ -81,13 +30,14 @@
                 ]
             },
             {
-                "title": "Dak",
+                "title": "r",
                 "unknown": 1,
                 "description": "Welk soort dak heeft u",
                 "from": null,
                 "till": null,
                 "next_question": 5,
                 "type": 2,
+                "ignore": false,
                 "answers": [
                     {
                         "title": "Plat dak",
@@ -107,98 +57,22 @@
                 ]
             },
             {
-                "title": "Kelder",
+                "title": "Basement",
                 "unknown": 1,
                 "description": "Heeft u een kelder",
                 "from": null,
                 "till": null,
                 "next_question": 6,
                 "type": 2,
+                "ignore": true,
                 "answers": [
                     {
-                        "title": "Plat dak",
+                        "title": "Ja",
                         "image": "",
                         "weight": 1
                     },
                     {
-                        "title": "Schuin dak",
-                        "image": "",
-                        "weight": 1
-                    },
-                    {
-                        "title": "Gemengd dak",
-                        "image": "",
-                        "weight": 1
-                    }
-                ]
-            },
-            {
-                "title": "Jaar",
-                "unknown": 1,
-                "description": "Selecteer het bouwjaar van uw huis",
-                "from": null,
-                "till": null,
-                "next_question": 7,
-                "type": 3,
-                "answers": [
-                    {
-                        "title": "1900",
-                        "image": "",
-                        "weight": 1
-                    },
-                    {
-                        "title": "1900-1945",
-                        "image": "",
-                        "weight": 1
-                    },
-                    {
-                        "title": "1945-1970",
-                        "image": "",
-                        "weight": 1
-                    },
-                    {
-                        "title": "1970-2000",
-                        "image": "",
-                        "weight": 1
-                    },
-                    {
-                        "title": "2000<",
-                        "image": "",
-                        "weight": 1
-                    }
-                ]
-            },
-            {
-                "title": "Renovatie",
-                "unknown": 1,
-                "description": "Wanneer was de laatste renovatie van uw huis?",
-                "from": null,
-                "till": null,
-                "next_question": 7,
-                "type": 3,
-                "answers": [
-                    {
-                        "title": "1900",
-                        "image": "",
-                        "weight": 1
-                    },
-                    {
-                        "title": "1900-1945",
-                        "image": "",
-                        "weight": 1
-                    },
-                    {
-                        "title": "1945-1970",
-                        "image": "",
-                        "weight": 1
-                    },
-                    {
-                        "title": "1970-2000",
-                        "image": "",
-                        "weight": 1
-                    },
-                    {
-                        "title": "2000<",
+                        "title": "Nee",
                         "image": "",
                         "weight": 1
                     }
@@ -210,75 +84,14 @@
         "title": "Isolatie",
         "questions": [
             {
-                "title": "Ramen",
+                "title": "insulation-wall",
                 "unknown": 1,
-                "description": "Welk soort ramen heeft u?",
-                "from": null,
-                "till": null,
-                "next_question": 8,
-                "type": 2,
-                "answers": [
-                    {
-                        "title": "Overal enkel glas",
-                        "image": "",
-                        "weight": 1
-                    },
-                    {
-                        "title": "Enkel en dubbel glas",
-                        "image": "",
-                        "weight": 1
-                    },
-                    {
-                        "title": "Overal dubbel glas",
-                        "image": "",
-                        "weight": 1
-                    }
-                ]
-            },
-            {
-                "title": "Dakisolatie",
-                "unknown": 1,
-                "description": "Hoe is uw dak geïsoleerd?",
-                "from": null,
-                "till": null,
-                "next_question": 8,
-                "type": 3,
-                "answers": [
-                    {
-                        "title": "Niet geïsoleerd",
-                        "image": "",
-                        "weight": 1
-                    },
-                    {
-                        "title": "Slecht geïsoleerd",
-                        "image": "",
-                        "weight": 1
-                    },
-                    {
-                        "title": "Matig geïsoleerd",
-                        "image": "",
-                        "weight": 1
-                    },
-                    {
-                        "title": "Goed geïsoleerd",
-                        "image": "",
-                        "weight": 1
-                    },
-                    {
-                        "title": "Perfect geïsoleerd",
-                        "image": "",
-                        "weight": 1
-                    }
-                ]
-            },
-            {
-                "title": "Gevel",
-                "unknown": 1,
-                "description": "Hoe is uw gevek geïsoleerd?",
+                "description": "Hoe is uw gevel geïsoleerd?",
                 "from": null,
                 "till": null,
                 "next_question": 9,
                 "type": 3,
+                "ignore": true,
                 "answers": [
                     {
                         "title": "Niet geïsoleerd",
@@ -308,13 +121,14 @@
                 ]
             },
             {
-                "title": "Vloer",
+                "title": "insulation-floor",
                 "unknown": 1,
                 "description": "Hoe is uw vloer geïsoleerd",
                 "from": null,
                 "till": null,
                 "next_question": 10,
                 "type": 3,
+                "ignore": true,
                 "answers": [
                     {
                         "title": "Niet geïsoleerd",
@@ -334,13 +148,14 @@
                 ]
             },
             {
-                "title": "Verwarming",
+                "title": "h",
                 "unknown": 1,
                 "description": "Hoe verwarmt u uw huis hoofdzakelijk?",
                 "from": null,
                 "till": null,
                 "next_question": 11,
                 "type": 2,
+                "ignore": true,
                 "answers": [
                     {
                         "title": "Aardgas",
@@ -375,49 +190,14 @@
                 ]
             },
             {
-                "title": "Ventilatie",
-                "unknown": 1,
-                "description": "Hoe ventileert u uw huis?",
-                "from": null,
-                "till": null,
-                "next_question": 12,
-                "type": 2,
-                "answers": [
-                    {
-                        "title": "Geen bijzonder ventilatiesysteem",
-                        "image": "",
-                        "weight": 1
-                    },
-                    {
-                        "title": "Ventilatieroosters aan ramen",
-                        "image": "",
-                        "weight": 1
-                    },
-                    {
-                        "title": "Minimale mechanische ventilatie",
-                        "image": "",
-                        "weight": 1
-                    },
-                    {
-                        "title": "Vraaggestuurde mechanische ventilatie",
-                        "image": "",
-                        "weight": 1
-                    },
-                    {
-                        "title": "Balansventilatie met warmte recuperatie",
-                        "image": "",
-                        "weight": 1
-                    }
-                ]
-            },
-            {
-                "title": "Hernieuwbare energie",
+                "title": "solar",
                 "unknown": 1,
                 "description": "Maakt u gebruik van hernieuwbare energie?",
                 "from": null,
                 "till": null,
                 "next_question": 13,
                 "type": 2,
+                "ignore": false,
                 "answers": [
                     {
                         "title": "Zonnepanelen",
@@ -441,102 +221,6 @@
                     },
                     {
                         "title": "Geen hernieuwbare energie",
-                        "image": "",
-                        "weight": 1
-                    }
-                ]
-            }
-        ]
-    },
-    {
-        "title": "Wonen",
-        "questions": [
-        	{
-                "title": "Eigenaar",
-                "unknown": 1,
-                "description": "Maakt u gebruik van hernieuwbare energie?",
-                "from": null,
-                "till": null,
-                "next_question": 14,
-                "type": 1
-            },
-            {
-                "title": "Personen",
-                "unknown": 1,
-                "description": "Hoeveel personen wonen in het pand?",
-                "from": null,
-                "till": null,
-                "next_question": 15,
-                "type": 3,
-                "answers": [
-                	{
-                        "title": "Geen (leegstaand)",
-                        "image": "",
-                        "weight": 1
-                    },
-                    {
-                        "title": "1",
-                        "image": "",
-                        "weight": 1
-                    },
-                    {
-                        "title": "2",
-                        "image": "",
-                        "weight": 1
-                    },
-                    {
-                        "title": "3",
-                        "image": "",
-                        "weight": 1
-                    },
-                    {
-                        "title": "4",
-                        "image": "",
-                        "weight": 1
-                    },
-                    {
-                        "title": "5",
-                        "image": "",
-                        "weight": 1
-                    },
-                    {
-                        "title": "6",
-                        "image": "",
-                        "weight": 1
-                    },
-                    {
-                        "title": "7",
-                        "image": "",
-                        "weight": 1
-                    },
-                    {
-                        "title": "3",
-                        "image": "",
-                        "weight": 1
-                    },
-                    {
-                        "title": "8 of meer",
-                        "image": "",
-                        "weight": 1
-                    }
-                ]
-            },
-            {
-                "title": "Hoeveel verbruikt uw woonst per jaar?",
-                "unknown": 1,
-                "description": "Maakt u gebruik van hernieuwbare energie?",
-                "from": null,
-                "till": null,
-                "next_question": 16,
-                "type": 5,
-                "answers": [
-                    {
-                        "title": "Gas",
-                        "image": "",
-                        "weight": 1
-                    },
-                    {
-                        "title": "Elektriciteit",
                         "image": "",
                         "weight": 1
                     }

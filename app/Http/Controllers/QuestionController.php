@@ -18,9 +18,11 @@ class QuestionController extends Controller
     public function index()
     {
         $questions = Question::all();
+
         foreach ($questions as $question) {
             $question->load('answers');
         }
+        
         return response()->json($questions);
     }
 

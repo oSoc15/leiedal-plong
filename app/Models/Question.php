@@ -8,7 +8,7 @@ class Question extends Eloquent
 {
     protected $table = 'questions';
 
-    protected $fillable = ['title' , 'description', 'unknown', 'next_question'];
+    protected $fillable = ['title' , 'description', 'unknown', 'next_question', 'ignore'];
 
     protected $hidden = ['question_type', 'section_id'];
 

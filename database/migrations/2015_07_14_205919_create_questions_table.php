@@ -15,6 +15,7 @@ class CreateQuestionsTable extends Migration
             $table->string('title');
             $table->boolean('unknown');
             $table->text('description');
+            $table->boolean('ignore');
             $table->integer('from')->nullable();
             $table->integer('till')->nullable();
             $table->integer('question_type')->unsigned();
