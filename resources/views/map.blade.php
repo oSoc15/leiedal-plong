@@ -3,14 +3,15 @@
 <head>
     <title>PLONG</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"> 
-    <link rel="stylesheet" href="css/map.css" />
+    <link rel="stylesheet" href="{{ asset('css/map.css') }}">
     <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-1.0.0-b1/leaflet.css" />
     <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600' rel='stylesheet' type='text/css'>
     <script src="http://cdn.leafletjs.com/leaflet-1.0.0-b1/leaflet.js"></script>
-    <script src="js/leafletesri.js"></script>
-    <script src="js/leafletwms.js"></script>
+    <script src="{{ asset('js/leafletesri.js') }}"></script> 
+    <script src="{{ asset('js/leafletwms.js') }}"></script> 
+    
     <script src="//cdnjs.cloudflare.com/ajax/libs/proj4js/2.0.0/proj4.js"></script>
-    <script src="js/proj.js"></script>
+    <script src="{{ asset('js/proj.js') }}"></script> 
 </head>
 <body>
     <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -50,7 +51,7 @@
                     resolutions: [12000, 143000, 269000, 255000], // 3 example zoom level resolutions
                 }
             );
-            // var map = L.map('map').setView([<?php echo $lat; ?>, <?php echo $lon; ?>], <?php echo $zoom; ?>);
+            var map = L.map('map').setView([{{ $lon }}, {{ $lat }}], {{ $zoom }});
             var tiles = L.WMS.tileLayer("http://grb.agiv.be/geodiensten/raadpleegdiensten/GRB-basiskaart/wmsgr?", {
                 'tileSize': 512,
                 'layers': 'GRB_BASISKAART',
@@ -77,10 +78,10 @@
             });
         });
 
-        // function getLocation (given) {
-        //     console.log('test');  
-        //     $.get('http://loc.geopunt.be/geolocation/location?q=' + given) 
-        // }
+        function getLocation (given) {
+            console.log('test');  
+            $.get('http://loc.geopunt.be/geolocation/location?q=' + given) 
+        }
     </script>
 </body>
 </html>

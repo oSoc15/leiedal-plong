@@ -16,8 +16,8 @@ class MapController extends Controller
      */
     public function index()
     {
-        $lat = 50.8086126;
-        $lon = 3.2469894;
+        $lat = 3.2469894;
+        $lon = 50.8086126;
         $zoom = 10;
         return View('map', array('lat' => $lat, 'lon' => $lon,'zoom' => $zoom));
     }
