@@ -3,28 +3,28 @@
         "title": "Gebouw",
         "questions": [
             {
-                "title": "f",
+                "title": "Hoogte/Verdiepen",
                 "unknown": 1,
                 "description": "Hoeveel verdiepingen telt uw huis?",
                 "from": null,
                 "till": null,
-                "next_question": 4,
+                "next_question": 2,
                 "type": 2,
                 "ignore": false,
                 "answers": [
                     {
                         "title": "Enkel gelijkvloers",
-                        "image": "",
+                        "image": "f1",
                         "weight": 1
                     },
                     {
                         "title": "1 verdiep",
-                        "image": "",
+                        "image": "f2",
                         "weight": 1
                     },
                     {
                         "title": "2 of meer verdiepen",
-                        "image": "",
+                        "image": "f3",
                         "weight": 1
                     }
                 ]
@@ -35,23 +35,23 @@
                 "description": "Welk soort dak heeft u",
                 "from": null,
                 "till": null,
-                "next_question": 5,
+                "next_question": 3,
                 "type": 2,
                 "ignore": false,
                 "answers": [
                     {
                         "title": "Plat dak",
-                        "image": "",
+                        "image": "r1",
                         "weight": 1
                     },
                     {
                         "title": "Schuin dak",
-                        "image": "",
+                        "image": "r2",
                         "weight": 1
                     },
                     {
                         "title": "Gemengd dak",
-                        "image": "",
+                        "image": "r3",
                         "weight": 1
                     }
                 ]

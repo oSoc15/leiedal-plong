@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Database\Migrations\Migration;
+use  Illuminate\Database\Migrations\Migration;
 
 class CreateQuestionsTable extends Migration
 {
@@ -16,6 +16,7 @@ class CreateQuestionsTable extends Migration
             $table->boolean('unknown');
             $table->text('description');
             $table->boolean('ignore');
+
             $table->integer('from')->nullable();
             $table->integer('till')->nullable();
             $table->integer('question_type')->unsigned();

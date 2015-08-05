@@ -6,3 +6,5 @@ Route::group(['middleware' => 'cors'], function () {
     Route::resource('api/residences', 'ResidenceController', ['only' => ['store', 'show']]);
     Route::post('api/residences/reply', 'ResidenceController@reply');
 });
+
+Route::get('', 'MapController@index');

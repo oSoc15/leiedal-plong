@@ -9,3 +9,4 @@ Thumbs.db
 .idea
 /app/config/local
 .sass-cache
+*.sublime-project
