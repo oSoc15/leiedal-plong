@@ -39,6 +39,23 @@
     </nav>
     <div class="container map-wrapper">
         <div id="map"></div>
+        <div class="modal fade" id="direct">
+        	<div class="modal-dialog">
+        		<div class="modal-content">
+        			<div class="modal-header">
+        				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        				<h4 class="modal-title">Ecolabel</h4>
+        			</div>
+        			<div class="modal-body">
+        				<p>Bepaal jouw ecolabel door het beantwoorden van een reeks van vragen</p>
+        			</div>
+        			<div class="modal-footer">
+        				<button type="button" class="btn btn-default" data-dismiss="modal">Sluit dit venster</button>
+        				<a href="#" class="btn btn-primary">Vragenlijst</a>
+        			</div>
+        		</div><!-- /.modal-content -->
+        	</div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
     </div>
     <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
@@ -92,20 +109,31 @@
             	type: 'post',
             	data: {'location': given}
             }).done(function(data) {
-            	// zoom map to the result
-            	map.setView([data.lat, data.lon], data.zoom, {animation: true});
+            	//check if residence can be found
+            	if (!data.error) {
+	            	// zoom map to the result
+	            	map.setView([data.lat, data.lon], data.zoom, {animation: true});
 
-            	// save residence to localstorage
-            	var residence = {
-            		"lat": data.lat,
-            		"lon": data.lon,
-            		"street": data.street,
-            		"number": data.number,
-            		"city": data.city,
-            	};
-            	localStorage.setItem('residence', JSON.stringify(residence));
+	            	// create residence object
+	            	var residence = {
+	            		'lat': data.lat,
+	            		'lon': data.lon,
+	            		'street': data.street,
+	            		'number': data.number,
+	            		'city': data.city,
+	            	};
 
-            	console.log(JSON.parse(localStorage.getItem('residence')));
+	            	// store residence object to localstorage so angular can use it
+	            	localStorage.setItem('residence', JSON.stringify(residence));
+
+	            	// open modal to go to the questionnaire
+	            	$('#direct').modal({
+	            		show: true
+	            	});
+            	} else {
+            		// TODO: show that residence can not be found
+            		// also modal???
+            	}
             }).fail(function(error, data) {
             	console.log(error);
             });
