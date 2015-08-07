@@ -16,8 +16,7 @@ class DatabaseSeeder extends Seeder
 
     protected $seeders = [
         'QuestionTypeTableSeeder',
-        'QuestionAnswerTableSeeder',
-        'ResidenceTableSeeder'
+        'QuestionAnswerTableSeeder'
     ];
 
     /**

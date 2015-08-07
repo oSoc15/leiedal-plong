@@ -51,7 +51,7 @@
         			</div>
         			<div class="modal-footer">
         				<button type="button" class="btn btn-default" data-dismiss="modal">Sluit dit venster</button>
-        				<a href="#" class="btn btn-primary">Vragenlijst</a>
+        				<a href="{{ URL::to('questionnaire') }}" class="btn btn-primary">Vragenlijst</a>
         			</div>
         		</div><!-- /.modal-content -->
         	</div><!-- /.modal-dialog -->

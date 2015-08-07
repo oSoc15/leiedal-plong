@@ -1,0 +1,274 @@
+@import 'vars';
+@import 'mixins';
+@import 'typography';
+@import 'settings';
+@import 'slider';
+
+
+html,
+body,
+#map {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+    font-size: $font-size--xs;
+    font-family: 'Source Sans Pro';
+    font-variant: small-caps;
+    text-transform: lowercase;
+    font-weight: 600;
+    color: $black;
+}
+p {
+    -webkit-margin-before: 0em;
+    -webkit-margin-after: 0em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+}
+a {
+    color: #3B81FD;
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: none;
+}
+
+no-link {
+    text-decoration: none;
+}
+
+no-link:hover {
+    text-decoration: none;
+}
+
+// Temp Code
+#landingpage {
+    display: none;
+}
+#qlandingpage {
+    display: none;
+}
+#faqpage {
+    display: none;
+}
+#contactpage {
+    display: none;
+}
+#energytipspage {
+    display: none;
+}
+#qcategoriesubpage {
+    display: none;
+}
+#slidemenu {
+    display: none;
+}
+
+
+//scss
+
+// QUESTIONNAIRE PAGE SCSS
+// =======================
+#questionairepage {
+    background-color: $grey;
+    width: 100%;
+    height: 100vh;
+
+    nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 50px;
+        @media #{$tablet} {
+            display: none;
+        }
+        #menu {
+            width: 50px;
+            height: 50px;
+            background-image: url("../assets/images/menu.svg");
+            background-repeat: no-repeat;
+            background-position: center center;
+            @media #{$tablet} {
+                display: none;
+            }
+        }
+    }
+
+    #questionsubpage {
+        position: relative;
+        top: 45vh;
+        left: 0;
+        background-color: $grey-light;
+        width: 100%;
+        height: 91vh;
+        @media #{$tablet} {
+            top: 0;
+            left: 0;
+            width: 350px;
+            height: 100vh;
+        }
+    }
+
+    .progressbar {
+        position: relative;
+        background-color: $grey-dark;
+        height: 10px;
+        width: 100%;
+        .progress {
+            width: 35%;
+            background-color: $green;
+            height: 10px;
+            transition: width 1s;
+        }
+    }
+
+    //use flex boxes
+    .flex-container {
+        padding: 0;
+        margin: 0;
+        list-style: none;
+        @include justify-content(space-around);
+        @include flex-flow(row);
+        @extend %flexbox;
+    }
+    .flex-item {
+        padding: 5px;
+        width: 20px;
+        height: 70px;
+        margin: 10px 0 0 0;
+        line-height: 25px;
+        color: $grey;
+        font-weight: bold;
+        font-size: 1.5em;
+        text-align: center;
+        @include flex-grow(1);
+        p {
+        line-height: 100%;
+
+        }
+    }
+
+    // AWNSERS
+    // =======
+    .answers {
+        position: relative;
+        width: 92%;
+        height: 40vh;
+        margin-left: auto;
+        margin-right: auto;
+        display: -webkit-flex;
+        display: block;
+        @include align-items(center);
+        @include justify-content(center);
+        @include flex-direction(row);
+        @include flex-wrap(wrap);
+        @include flex-flow(row wrap);
+        @include align-content(flex-end);
+        @media #{$tablet} {
+            width: 150px;
+
+        }
+        // Button
+        .answer-button {
+            cursor: pointer;
+            position: relative;
+            width: 200px;
+            height: 50px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            padding-top: 50px;
+            background-color: #fff;
+            text-align: center;
+            display: inline-block;
+            float: left;
+            font-size: 20px;
+
+            &:hover {
+                background: #ddd;
+            }
+            
+
+            @media #{$tablet} {
+                width: 100%;
+                float: none;
+            }
+        }
+        // Selected instance of the answer 
+        .answer-selected{
+            background: #999;
+        }
+        @import 'answers';
+
+
+    }
+    .grow {
+        @include flex-grow(4);
+    }
+    .icon-left {
+        background-image: url("../assets/images/arrow-left.svg");
+        background-repeat: no-repeat;
+        background-position: center center;
+    }
+    .icon-right {
+        background-image: url("../assets/images/arrow-right.svg");
+        background-repeat: no-repeat;
+        background-position: center center;
+    }
+    .icon-overview {
+        background-image: url("../assets/images/overview.svg");
+        background-repeat: no-repeat;
+        background-position: center center;
+    }
+    .icon-info {
+        background-image: url("../assets/images/info.svg");
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: 20px;
+    }
+    #question {
+        padding-top: 20px;
+    }
+    .question {
+        padding: 0;
+        font-variant: small-caps; //check if used
+    }
+    .illustrationbox {
+        position: fixed;
+        width: 100%;
+        height: 45vh;
+        @media #{$tablet} {
+            top: 0;
+            left: 0;
+            height: 100vh;
+            background-color: $grey;
+        }
+        img {
+            position: absolute;
+            width: 190px; //height:153px  //use liquid height?
+            left: 50%;
+            margin-left: -95px;
+            bottom: 20vh;
+            margin-bottom: -70px;
+            @media #{$tablet} {
+                position: absolute;
+                width: 400px;
+                left: 63%;
+                margin-left: -161px;
+                bottom: 55vh;
+                margin-bottom: -200px;
+            }
+        }
+        .label-leiedal {
+            width: 69px;
+            height: 27px;
+            position: absolute;
+            right: 15px;
+            bottom: 15px;
+            background-image: url("../assets/images/partnerLogo.svg");
+            background-repeat: no-repeat;
+            background-position: center center;
+        }
+    }
+}

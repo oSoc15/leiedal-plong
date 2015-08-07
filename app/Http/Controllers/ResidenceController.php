@@ -16,6 +16,14 @@ use Vinkla\Hashids\Facades\Hashids;
 class ResidenceController extends Controller
 {
     /**
+     * provide to route for the angular application
+     * @return type
+     */
+    public function index()
+    {
+       return View('questionnaire'); 
+    }
+    /**
      * Store a newly created resource in storage.
      *
      * @param Request $request
@@ -43,7 +51,7 @@ class ResidenceController extends Controller
         $question = Question::findOrFail(1)->load('answers');
 
         return response()->json(array(
-            'error' => false,
+            'error' => $request->all(),
             'residence' => $residence,
             'question' => $question,
         ));

@@ -9,3 +9,7 @@ Route::group(['middleware' => 'cors'], function () {
 
 Route::get('', 'MapController@index');
 Route::post('location', 'MapController@location');
+Route::get('/questionnaire', [
+	'as' => 'questionnaire',
+	'uses' => 'ResidenceController@index'
+]);

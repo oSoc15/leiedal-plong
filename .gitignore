@@ -4,6 +4,7 @@ composer.phar
 composer.lock
 .env.*.php
 .env.php
+.env
 .DS_Store
 Thumbs.db
 .idea
@@ -11,4 +12,5 @@ Thumbs.db
 .sass-cache
 *.sublime-project
 *.sublime-workspace
-
+/public/bower_components
+node_modules/

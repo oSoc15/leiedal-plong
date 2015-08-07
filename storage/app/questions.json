@@ -3,31 +3,31 @@
         "title": "Gebouw",
         "questions": [
             {
-                "title": "Hoogte/Verdiepen",
+                "title": "f",
                 "unknown": 1,
                 "description": "Hoeveel verdiepingen telt uw huis?",
                 "from": null,
                 "till": null,
-                "next_question": 2,
+                "next_question": 4,
                 "type": 2,
-                "ignore": false,
+                "ignore": 0,
                 "answers": [
                     {
                         "title": "Enkel gelijkvloers",
-                        "image": "f1",
+                        "image": "",
                         "weight": 1
                     },
                     {
                         "title": "1 verdiep",
-                        "image": "f2",
+                        "image": "",
                         "weight": 1
                     },
                     {
                         "title": "2 of meer verdiepen",
-                        "image": "f3",
+                        "image": "",
                         "weight": 1
-                    }
-                ]
+            }
+        ]
             },
             {
                 "title": "r",
@@ -35,23 +35,23 @@
                 "description": "Welk soort dak heeft u",
                 "from": null,
                 "till": null,
-                "next_question": 3,
+                "next_question": 5,
                 "type": 2,
-                "ignore": false,
+                "ignore": 0,
                 "answers": [
                     {
                         "title": "Plat dak",
-                        "image": "r1",
+                        "image": "",
                         "weight": 1
                     },
                     {
                         "title": "Schuin dak",
-                        "image": "r2",
+                        "image": "",
                         "weight": 1
                     },
                     {
                         "title": "Gemengd dak",
-                        "image": "r3",
+                        "image": "",
                         "weight": 1
                     }
                 ]
@@ -64,7 +64,7 @@
                 "till": null,
                 "next_question": 6,
                 "type": 2,
-                "ignore": true,
+                "ignore": 1,
                 "answers": [
                     {
                         "title": "Ja",
@@ -91,7 +91,7 @@
                 "till": null,
                 "next_question": 9,
                 "type": 3,
-                "ignore": true,
+                "ignore": 1,
                 "answers": [
                     {
                         "title": "Niet geïsoleerd",
@@ -128,7 +128,7 @@
                 "till": null,
                 "next_question": 10,
                 "type": 3,
-                "ignore": true,
+                "ignore": 1,
                 "answers": [
                     {
                         "title": "Niet geïsoleerd",
@@ -148,14 +148,14 @@
                 ]
             },
             {
-                "title": "h",
+                "title": "heating",
                 "unknown": 1,
                 "description": "Hoe verwarmt u uw huis hoofdzakelijk?",
                 "from": null,
                 "till": null,
                 "next_question": 11,
                 "type": 2,
-                "ignore": true,
+                "ignore": 1,
                 "answers": [
                     {
                         "title": "Aardgas",
@@ -197,7 +197,7 @@
                 "till": null,
                 "next_question": 13,
                 "type": 2,
-                "ignore": false,
+                "ignore": 0,
                 "answers": [
                     {
                         "title": "Zonnepanelen",

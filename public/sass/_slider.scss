@@ -1,0 +1,112 @@
+.slider-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+    width: 100%;
+    height: 100vh;
+    z-index: 100;
+    -moz-transform: translate(-100%,0);  /* IE 9 */
+    -ms-transform: translate(-100%,0); /* IE 9 */
+   	-webkit-transform: translate(-100%,0); /* Safari */
+    transform: translate(-100%,0);
+    animation-duration: 0.5s;
+    transition-duration: 0.5s;
+
+    .menu-items {
+        background-color: #FFF;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 80%;
+        height: 100vh;
+            -moz-transform: translate(-100%,0);  /* IE 9 */
+        -ms-transform: translate(-100%,0); /* IE 9 */
+   	-webkit-transform: translate(-100%,0); /* Safari */
+    transform: translate(-100%,0);
+    animation-duration: 1s;
+    transition-duration: 1s;
+    }
+}
+
+.menu-in,
+.menu-out {
+  width: 80%;
+  height: 100vh;
+  background: #FFF;
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+}
+
+.menu-in {
+  -webkit-animation: menu-in .9s forwards ease;
+}
+
+.menu-out{
+  -webkit-animation: menu-out .4s forwards ease-in;
+}
+
+.shadow-in,
+.shadow-out{
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.shadow-in {
+  -webkit-animation: shadow-in .9s forwards ease;
+}
+
+.shadow-out {
+   -webkit-animation: shadow-out .4s forwards ease-in;
+}
+
+.none {
+  display: none;
+}
+
+@-webkit-keyframes menu-in {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 0;
+  }
+}
+
+@-webkit-keyframes menu-out {
+  0% {
+    left: 0;
+  }
+  100% {
+    left: -100%;
+  }
+}
+
+@-webkit-keyframes shadow-in {
+  0% {
+
+    opacity: 0;
+  }
+  100% {
+
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes shadow-out {
+  0% {
+    opacity: 1;
+  }
+  99%{
+    height: 100vh;
+  }
+  100% {
+    height: 0;
+    opacity: 0;
+  }
+}
