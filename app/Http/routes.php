@@ -13,3 +13,8 @@ Route::get('/questionnaire', [
 	'as' => 'questionnaire',
 	'uses' => 'ResidenceController@index'
 ]);
+
+Route::get('/tips', [
+	'as' => 'tips',
+	'uses' => 'ResidenceController@tips'
+]);

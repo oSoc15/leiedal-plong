@@ -188,43 +188,6 @@
                         "weight": 1
                     }
                 ]
-            },
-            {
-                "title": "solar",
-                "unknown": 1,
-                "description": "Maakt u gebruik van hernieuwbare energie?",
-                "from": null,
-                "till": null,
-                "next_question": 13,
-                "type": 2,
-                "ignore": 0,
-                "answers": [
-                    {
-                        "title": "Zonnepanelen",
-                        "image": "",
-                        "weight": 1
-                    },
-                    {
-                        "title": "Zonneboiler",
-                        "image": "",
-                        "weight": 1
-                    },
-                    {
-                        "title": "Warmtepomp",
-                        "image": "",
-                        "weight": 1
-                    },
-                    {
-                        "title": "Houtpellets",
-                        "image": "",
-                        "weight": 1
-                    },
-                    {
-                        "title": "Geen hernieuwbare energie",
-                        "image": "",
-                        "weight": 1
-                    }
-                ]
             }
         ]
     }

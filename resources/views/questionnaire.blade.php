@@ -4,7 +4,7 @@
 	<head>
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-		<title ng-bind="pageTitle"></title>
+		<title ng-bind="pageTitle">Vragenlijst</title>
 		<meta name="description" content="Plong app">
 		<meta name="viewport" content="width=device-width, user-scalable=no">
 		<meta name="apple-mobile-web-app-c0.apable" content="yes">

@@ -120,4 +120,9 @@ class ResidenceController extends Controller
             'question' => $nextQuestion
         ));
     }
+
+    public function tips()
+    {
+        return View('tips');
+    }
 }
