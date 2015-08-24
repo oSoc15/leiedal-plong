@@ -15,7 +15,8 @@ For partner [Leiedal](http://www.leiedal.be/).
 1. Clone this repo from `https://github.com/oSoc15/leiedal-leiedal-api`
 2. Run `composer install` from the root directory
 3. Change your environment to your credentials
-3. Run `php artisan migrate`
+3. Run `php artisan migrate` to create the database tables and relationships
+4. Run `php artisan db:seed` to seed the tables
 
 
 ---
