@@ -11,11 +11,13 @@
     <script src="{{ asset('js/leafletwms.js') }}"></script> 
     
     <script src="//cdnjs.cloudflare.com/ajax/libs/proj4js/2.0.0/proj4.js"></script>
+    <script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <script src="{{ asset('js/proj.js') }}"></script> 
 </head>
 <body>
     <nav class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
+        <div class="container-fluid">
             <div class="navbar-header">
                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
                     <span class="sr-only">Toggle navigation</span>
@@ -27,8 +29,8 @@
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#">Bereken</a></li>
-                    <li><a href="#">Tips</a></li>
+                    <li><a href="{{ URL::route('questionnaire') }}">Bereken</a></li>
+                    <li><a href="{{ URL::route('tips') }}">Tips</a></li>
                     <li><a href="#">Help</a></li>
                 </ul>
                 <form class="navbar-form navbar-right">
@@ -39,7 +41,19 @@
     </nav>
     <div class="container map-wrapper">
         <div id="map"></div>
-        <div class="modal fade" id="direct">
+        <div class="alert alert-success alert-dismissible notification" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <strong>Goed gedaan!</strong> Bepaal jouw ecolabel door het invullen van een <a href="{{ URL::to('questionnaire') }}" class="alert-link">vragenlijst</a>
+        </div>
+        <div class="alert alert-danger alert-dismissible notification" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <strong>Oeps!</strong> De ingevulde locatie kan niet gevonden worden
+        </div>
+
+
+      <div class="modal fade" id="direct">
         	<div class="modal-dialog">
         		<div class="modal-content">
         			<div class="modal-header">
@@ -133,6 +147,8 @@
             	} else {
             		// TODO: show that residence can not be found
             		// also modal???
+
+
             	}
             }).fail(function(error, data) {
             	console.log(error);

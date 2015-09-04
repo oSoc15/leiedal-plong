@@ -8,7 +8,7 @@ app.controller('MainCtrl', ['$scope', '$http', '$resource', '$localStorage',
  	function($scope, $http, $resource, $localStorage) {
 
 		// api url: http://leiedal.app/api/
-		var api = 'http://questionaire.app/api/';
+		var api = 'http://questionnaire.app/api/';
 
         var residence = localStorage.getItem('residence');
         console.log(residence);

@@ -1,17 +1,22 @@
 html,
 body,
-#landingmap{
+#landingmap {
     margin: 0;
     font-family: 'Source Sans Pro';
 }
 
+body {
+    padding-top: 75px;
+}
+
 #map {
     background-color: #3E3E3E;
+    margin-left: 0;
+    width: 100%;
     position: absolute;
     top: 75px;
-    margin-left: 0;
     bottom: 0;
-    width: 100%;
+    margin-right: 25px;
 }
 
 .map-wrapper {
