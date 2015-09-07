@@ -1,10 +1,8 @@
-Leiedal Questionnaire API
+Leiedal plong
 =====================================
 
-An API for [leiedal-questionnaire](https://github.com/oSoc15/leiedal-questionnaire).
-For partner [Leiedal](http://www.leiedal.be/).
+Determine your energy label through an interactive platform
 
-[Leiedal-questionnaire-api](https://github.com/oSoc15/leiedal-questionnaire-api), [leiedal-map](https://github.com/oSoc15/leiedal-map) and this repository form an application.
 
 [View contributors](https://github.com/oSoc15/leiedal-questionnaire-api/graphs/contributors)
 
@@ -12,12 +10,11 @@ For partner [Leiedal](http://www.leiedal.be/).
 
 ### Getting up and running
 
-1. Clone this repo from `https://github.com/oSoc15/leiedal-leiedal-api`
-2. Run `composer install` from the root directory
+1. Clone this repo from `https://github.com/oSoc15/leiedal-plong`
+2. Run `composer install` from the root directory of the cloned repository 
 3. Change your environment to your credentials
 3. Run `php artisan migrate` to create the database tables and relationships
 4. Run `php artisan db:seed` to seed the tables
-
 
 ---
 
@@ -73,4 +70,4 @@ parameters:
 
 Returns the updated residence, the current question and the possible answers.
 
-This project uses the [laravel framework](https://github.com/laravel/framework).
+This project uses the [laravel framework](https://github.com/laravel/framework) and [AngularJS](https://angularjs.org/).
