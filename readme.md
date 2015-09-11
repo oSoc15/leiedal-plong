@@ -9,6 +9,7 @@ Determine your energy label through an interactive platform
 ---
 
 ### Getting up and running
+If this is the first time that you use laravel, check out the [getting started guide](http://laravel.com/docs/5.1/installation) from laravel.
 
 1. Clone this repo from `https://github.com/oSoc15/leiedal-plong`
 2. Run `composer install` from the root directory of the cloned repository 
