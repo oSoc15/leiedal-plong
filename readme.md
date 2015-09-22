@@ -15,6 +15,10 @@ A good PHP development environment is [Homestead](http://laravel.com/docs/5.1/ho
 3. Change your environment to your credentials
 3. Run `php artisan migrate` to create the database tables and relationships
 4. Run `php artisan db:seed` to seed the tables
+5. Run `npm install -g gulp bower` to install to build system and client package manager
+6. Run `npm install` to pull the dependencies
+7. Run `bower install` to pull the client dependencies
+8. Run `gulp` to monitor the changes in CSS and JS files. Has to be launched to develop the frontend
 
 ---
 
