@@ -7,7 +7,7 @@ var app = angular.module('app', ['ngResource', 'ngStorage'], function($interpola
 app.controller('MainCtrl', ['$scope', '$http', '$resource', '$localStorage',
  	function($scope, $http, $resource, $localStorage) {
 
-		// api url: http://leiedal.app/api/
+    // You will have to change this url to the url of the api
 		var api = 'http://questionnaire.app/api/';
 
         var residence = localStorage.getItem('residence');
