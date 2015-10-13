@@ -18,7 +18,7 @@ class MapController extends Controller
     {
         $lat = 50.8086126;
         $lon = 3.2469894;
-        $zoom = 10;
+        $zoom = 14;
         return View('map', array('lat' => $lat, 'lon' => $lon,'zoom' => $zoom));
     }
 
@@ -54,7 +54,6 @@ class MapController extends Controller
                 }
 
                 $obid_json = file_get_contents('http://www.govmaps.eu/arcgis/rest/services/ICL/ICL_Energielabelatlas/MapServer/0/query?where=ADRES' . urlencode('=\'' . $adres . '\'') . '&returnIdsOnly=true&f=pjson');
-
                 $obid_array = json_decode($obid_json, true);
 
                 $objectId = $obid_array['objectIds'][0];

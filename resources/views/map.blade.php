@@ -34,7 +34,7 @@
                     <li><a href="#">Help</a></li>
                 </ul>
                 <form class="navbar-form navbar-right">
-                    <input type="text" placeholder="Zoek..." class="form-control">
+                    <input type="text" placeholder="Zoek locatie..." class="form-control">
                 </form>
             </div><!--/.navbar-collapse -->
         </div>
@@ -52,7 +52,7 @@
             <strong>Oeps!</strong> De ingevulde locatie kan niet gevonden worden
         </div>
 
-
+        <!-- Questionnaire prompt modal -->
       <div class="modal fade" id="direct">
         	<div class="modal-dialog">
         		<div class="modal-content">
@@ -70,17 +70,51 @@
         		</div><!-- /.modal-content -->
         	</div><!-- /.modal-dialog -->
         </div><!-- /.modal -->
+
+        <!-- Location not found modal -->
+        <div class="modal fade" id="notfound">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title">Foutmelding</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>Het opgevraagde adres kon niet worden gevonden. <br>
+                        Adressen hebben volgend formaat: "straatnaam huisnummer, stad".
+                        </p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Sluit dit venster</button>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+
     </div>
     <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <script type="text/javascript">
-    
+
+        /*
+
+         var crs = new L.Proj.CRS("EPSG:31370",
+         "+proj=lcc +lat_1=51.16666723333333 +lat_2=49.8333339 +lat_0=90 +lon_0=4.367486666666666 +x_0=150000.013 +y_0=5400088.438 +ellps=intl +towgs84=-106.868628,52.297783,-103.723893,4.1,-2.2,1.842183,-1.2747 +units=m +no_defs",
+         {
+         resolutions: [12000, 143000, 269000, 255000] // 3 example zoom level resolutions
+         }
+         );
+
+         */
+
+        // Offset 2nd layer to match baselayer
         var crs = new L.Proj.CRS("EPSG:31370",
-            "+proj=lcc +lat_1=51.16666723333333 +lat_2=49.8333339 +lat_0=90 +lon_0=4.367486666666666 +x_0=150000.013 +y_0=5400088.438 +ellps=intl +towgs84=-106.868628,52.297783,-103.723893,0.336570,-0.456955,1.842183,-1.2747 +units=m +no_defs",
-            {
-                resolutions: [12000, 143000, 269000, 255000], // 3 example zoom level resolutions
-            }
+                "+proj=lcc +lat_1=51.16666723333333 +lat_2=49.8333339 +lat_0=90 +lon_0=4.367486666666666 +x_0=150000.013 +y_0=5400088.438 +ellps=intl +towgs84=-106.868628,52.297783,-103.723893,4.1,-2.2,1.842183,-1.2747 +units=m +no_defs",
+                {
+                    resolutions: [12000, 143000, 269000, 255000] // 3 example zoom level resolutions
+                }
         );
+
         // attach the map to the div 
         var map = L.map('map').setView([{{ $lat }}, {{ $lon }}], {{ $zoom }});
         
@@ -89,14 +123,15 @@
             'tileSize': 512,
             'layers': 'GRB_BASISKAART',
             'transparent': false,
-            'crs': crs
+            'crs': crs,
+            'tms':true
         }).addTo(map);
 
-        L.WMS.tileLayer("http://wms.agiv.be/ogc/wms/omkl?", {
+        /* L.WMS.tileLayer("http://wms.agiv.be/ogc/wms/omkl?", {
             'tileSize': 512,
             'layers': 'Ortho',
             'transparent': true
-        }).addTo(map);
+        }).addTo(map); */
 
         // add the map with the ecolabels
         L.esri.dynamicMapLayer({
@@ -105,12 +140,16 @@
             'crs': crs
         }).addTo(map);
 
+        console.log(map);
+
         // check for enter in search bar
         $('.navbar-form input').keydown(function(event) {
             if(event.keyCode == 13){
                 event.preventDefault();
                 if (event.target.value.trim().length != 0) {
                 	getLocation(event.target.value);
+                } else {
+                    console.log("No search parameters");
                 }
             }
         });
@@ -119,10 +158,11 @@
 
         	// get data of given search 
             $.ajax({ 
-            	url: '/location',
+            	url: 'location',
             	type: 'post',
             	data: {'location': given}
             }).done(function(data) {
+                console.log(data);
             	//check if residence can be found
             	if (!data.error) {
 	            	// zoom map to the result
@@ -134,7 +174,7 @@
 	            		'lon': data.lon,
 	            		'street': data.street,
 	            		'number': data.number,
-	            		'city': data.city,
+	            		'city': data.city
 	            	};
 
 	            	// store residence object to localstorage so angular can use it
@@ -145,10 +185,9 @@
 	            		show: true
 	            	});
             	} else {
-            		// TODO: show that residence can not be found
-            		// also modal???
-
-
+                    $('#notfound').modal({
+                        show: true
+                    });
             	}
             }).fail(function(error, data) {
             	console.log(error);

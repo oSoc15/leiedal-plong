@@ -14,3 +14,4 @@ Thumbs.db
 *.sublime-workspace
 /public/bower_components
 node_modules/
+/.vagrant

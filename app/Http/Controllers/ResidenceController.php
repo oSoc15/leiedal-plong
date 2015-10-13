@@ -32,10 +32,12 @@ class ResidenceController extends Controller
      */
     public function store(Request $request)
     {
+        // http://localhost:82/plong/public/api/residences?street=test&city=gent&number=5
+
         $validator = Validator::make($request->all(), [
             'street' => 'required',
             'city' => 'required',
-            'number' => 'required',
+            'number' => 'required'
         ]);
 
         if ($validator->fails()) {

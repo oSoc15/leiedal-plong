@@ -7,7 +7,7 @@ var app = angular.module('app', ['ngResource', 'ngStorage'], function($interpola
 app.controller('MainCtrl', ['$scope', '$http', '$resource', '$localStorage', function($scope, $http, $resource, $localStorage) {
 
   // You will have to change this url to the url of the api
-  var api = 'http://questionnaire.app/api/';
+  var api = 'http://localhost:82/plong/public/api/';
 
   var residence = localStorage.getItem('residence');
   console.log(residence);
