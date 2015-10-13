@@ -41,6 +41,9 @@
     </nav>
     <div class="container map-wrapper">
         <div id="map"></div>
+
+        <!-- TODO: Why are these alerts here, where are they called?
+
         <div class="alert alert-success alert-dismissible notification" role="alert">
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
@@ -51,6 +54,8 @@
             <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             <strong>Oeps!</strong> De ingevulde locatie kan niet gevonden worden
         </div>
+
+        -->
 
         <!-- Questionnaire prompt modal -->
       <div class="modal fade" id="direct">
@@ -123,8 +128,7 @@
             'tileSize': 512,
             'layers': 'GRB_BASISKAART',
             'transparent': false,
-            'crs': crs,
-            'tms':true
+            'crs': crs
         }).addTo(map);
 
         /* L.WMS.tileLayer("http://wms.agiv.be/ogc/wms/omkl?", {
@@ -139,8 +143,6 @@
             opacity: 0.5,
             'crs': crs
         }).addTo(map);
-
-        console.log(map);
 
         // check for enter in search bar
         $('.navbar-form input').keydown(function(event) {

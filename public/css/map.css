@@ -11,16 +11,23 @@ body {
 
 #map {
     background-color: #3E3E3E;
-    margin-left: 0;
-    width: 100%;
+    width: 98%;
     position: absolute;
-    top: 75px;
+    top: 65px;
     bottom: 0;
-    margin-right: 25px;
+    margin-right: 1%;
+    margin-left: 1%;
+    padding: 0 0 10px 0;
+}
+
+#map .leaflet-tile {
+    -webkit-filter: invert(1);
+    filter: invert(1);
 }
 
 .map-wrapper {
 	margin: 0;
+    padding: 0;
 }
 
 #logo{
