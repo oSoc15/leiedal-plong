@@ -43,7 +43,7 @@
 		            <!-- menu -->
 		            <ul class="flex-container">
 		                <!-- navigate previous question -->
-		                <li id="previous" ng-click="toPreviousQuestion()" ng-disabled="q==0" ng-style="{opacity : ((q==0) && '0.3') || '1'}" class="flex-item icon-left"></li>
+		                <li id="previous" ng-click="q==0 || toPreviousQuestion()" ng-disabled="q==0" ng-style="{opacity : ((q==0) && '0.3') || '1'}" class="flex-item icon-left"></li>
 		                <!-- all questions -->
 		                <li id="overview" ng-click="" ng-disabled="q==0" class="flex-item icon-overview"></li>
 		                <!-- shows questions -->
@@ -51,8 +51,11 @@
 		                <!-- shows information about the question -->
 		                <li id="info" ng-click="" ng-disabled="" class="flex-item icon-info"></li>
 		                <!-- navigate next question -->
-		                <li id="next"ng-click="answer()" ng-disabled="q+1>=questions.length" ng-style="{opacity : ((q+1>=questions.length) && '0.3') || '1'}" class="flex-item icon-right"></li>
-		            </ul>
+		                <li id="next" ng-disabled="q+1>=questions.length" ng-click="answer()" ng-style="{opacity : ((q+1>=questions.length) && '0.3') || '1'}" class="flex-item icon-right"></li>
+
+                        <li id="finish" ng-click="!q+1>=questions.length || finish('{{ URL::to('tips') }}')" ng-style="{opacity : ((q+1>=questions.length) && '1') || '0.1'}" class="flex-item icon-right"></li>
+
+                    </ul>
 		        </div>
 
 		        <div class="answers">
@@ -81,10 +84,12 @@
 		        </div>-->
 		    </div>
 		</div>
+    </div>
 
-		<script src="{{ asset('bower_components/angular/angular.min.js') }}"></script>
-		<script src="{{ asset('bower_components/angular-resource/angular-resource.min.js') }}"></script>
-		<script src="{{ asset('bower_components/ngstorage/ngStorage.min.js') }}"></script>
-		<script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{ asset('bower_components/angular/angular.min.js') }}"></script>
+    <script src="{{ asset('bower_components/angular-resource/angular-resource.min.js') }}"></script>
+    <script src="{{ asset('bower_components/ngstorage/ngStorage.min.js') }}"></script>
+    <script src="{{ asset('js/app.js') }}"></script>
+
 	</body>
 </html>

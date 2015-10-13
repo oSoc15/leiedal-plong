@@ -4,7 +4,7 @@ var app = angular.module('app', ['ngResource', 'ngStorage'], function($interpola
   $interpolateProvider.startSymbol('<%');
   $interpolateProvider.endSymbol('%>');
 });
-app.controller('MainCtrl', ['$scope', '$http', '$resource', '$localStorage', function($scope, $http, $resource, $localStorage) {
+app.controller('MainCtrl', ['$scope', '$http', '$resource', '$localStorage', '$window', function($scope, $http, $resource, $localStorage, $window) {
 
   // You will have to change this url to the url of the api
   var api = 'http://localhost:82/plong/public/api/';
@@ -128,6 +128,12 @@ app.controller('MainCtrl', ['$scope', '$http', '$resource', '$localStorage', fun
       $scope.prefixes.push(newPrefix);
     }
   }
+
+    $scope.finish = function(link)
+    {
+        $window.location.href = link;
+    };
+
 }
 ]);
 
