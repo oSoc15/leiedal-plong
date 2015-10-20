@@ -6,6 +6,7 @@ Route::group(['middleware' => 'cors'], function () {
     Route::get('api/residences/{id}', 'ResidenceController@show');
     Route::post('api/residences', 'ResidenceController@store');
     Route::post('api/residences/reply', 'ResidenceController@reply');
+    Route::get('api/residences/answers/{id}', 'ResidenceController@getAnswers');
    // Route::post('api/residences/reply/{id}/', 'ResidenceController@reply');
 });
 
@@ -20,7 +21,7 @@ Route::get('/questionnaire', [
 	'uses' => 'ResidenceController@index'
 ]);
 
-Route::get('/tips/{id?}', [
+Route::get('/tips', [
 	'as' => 'tips',
 	'uses' => 'ResidenceController@tips'
 ]);

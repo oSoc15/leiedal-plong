@@ -1,16 +1,11 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="app">>
 <head>
     <title>PLONG - Tips</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600' rel='stylesheet' type='text/css'>
-
-    <script src="//cdnjs.cloudflare.com/ajax/libs/proj4js/2.0.0/proj4.js"></script>
-    <script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-    <script src="{{ asset('js/proj.js') }}"></script>
 </head>
-<body>
+<body ng-controller="TipCtrl">
 <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container-fluid">
         <div class="navbar-header">
@@ -20,7 +15,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">Plong</a>
+            <a class="navbar-brand" href="{{ URL::route('map') }}">Plong</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
@@ -33,7 +28,15 @@
 </nav>
 <div class="container map-wrapper">
     <h1>U hebt de tip pagina bereikt</h1>
-    <p>{{ $id }}</p>
+
 </div>
+
+
+<script src="{{ asset('bower_components/angular/angular.min.js') }}"></script>
+<script src="{{ asset('bower_components/angular-resource/angular-resource.min.js') }}"></script>
+<script src="{{ asset('bower_components/ngstorage/ngStorage.min.js') }}"></script>
+<script src="{{ asset('js/app.js') }}"></script>
+<script src="{{ asset('js/controllers/tipCtrl.js') }}"></script>
+
 </body>
 </html>

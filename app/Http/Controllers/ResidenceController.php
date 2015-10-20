@@ -130,15 +130,12 @@ class ResidenceController extends Controller
         */
     }
 
-    public function tips($id = null)
+    public function tips()
     {
-        $residence = null;
-        $score = null;
+        return View('tips');
+    }
 
-        if($id) {
-            $residence = Residence::findOrFail(Hashids::decode($id))->load('replies.real_answers');
-        }
-
-        return View('tips', ['id' => $residence, 'score' => $score]);
+    public function getAnswers($id) {
+        return Residence::findOrFail(Hashids::decode($id))->load('replies.real_answers.answer');
     }
 }

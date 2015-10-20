@@ -95,6 +95,6 @@
         <script src="{{ asset('bower_components/angular-resource/angular-resource.min.js') }}"></script>
         <script src="{{ asset('bower_components/ngstorage/ngStorage.min.js') }}"></script>
         <script src="{{ asset('js/app.js') }}"></script>
-
+        <script src="{{ asset('js/controllers/mainCtrl.js') }}"></script>
 	</body>
 </html>

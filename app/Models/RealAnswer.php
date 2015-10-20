@@ -14,7 +14,7 @@ class RealAnswer extends Model
 
     public function answer()
     {
-        return $this->hasOne('App\Models\Answer');
+        return $this->hasOne('App\Models\Answer', 'id', 'answer_id');
     }
 
     public function question()
