@@ -3,7 +3,8 @@
 Route::group(['middleware' => 'cors'], function () {
     Route::resource('api/questions', 'QuestionController', ['only' => ['index', 'show']]);
     Route::resource('api/sections', 'SectionController', ['only' => ['index', 'show']]);
-    Route::resource('api/residences', 'ResidenceController', ['only' => ['store', 'show']]);
+    Route::get('api/residences/{id}', 'ResidenceController@show');
+    Route::post('api/residences', 'ResidenceController@store');
     Route::post('api/residences/reply', 'ResidenceController@reply');
 });
 

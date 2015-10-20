@@ -10,12 +10,15 @@ app.controller('MainCtrl', ['$scope', '$http', '$resource', '$localStorage', '$w
   var api = 'http://localhost:82/plong/public/api/';
 
   var residence = localStorage.getItem('residence');
-  console.log(residence);
+  var hashId;
+  var Residence;
 
   $http.post(api + 'residences', residence)
   .success(function(data, status, headers, config) {
     residence = data.residence;
-    console.log(residence);
+    hashId = residence['hashid'];
+    Residence = $resource(api + 'residences/' + hashId);
+    $scope.residence = Residence.query();
   })
   .error(function(data, status, headers, config) {
     console.error(data);
@@ -31,10 +34,8 @@ app.controller('MainCtrl', ['$scope', '$http', '$resource', '$localStorage', '$w
   // Get residence from api
   // Development hashid is filled in
   // var Residence = $resource(api + 'residences/4g3j5b80j8ed061');
-  // $scope.residence = Residence.query();
-  // console.log($scope.residence);
-
-  var hashId = '4g3j5b80j8ed061';
+  console.log($scope.residence);
+    
   // current selected question
   $scope.q = 0;
   $scope.questComplete = false;
@@ -75,11 +76,6 @@ app.controller('MainCtrl', ['$scope', '$http', '$resource', '$localStorage', '$w
       // default
       $scope.select($scope.questions[$scope.q], $scope.questions[$scope.q].answers[0]);
     }
-
-      console.log( $scope.sessionReplies);
-      console.log("DURIDUM2");
-      console.log($scope.reply);
-
 
     $http.post(api + 'residences/reply', $scope.reply)
     .success(function(data, status, headers, config) {
