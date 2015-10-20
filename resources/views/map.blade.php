@@ -140,7 +140,7 @@
         // add the map with the ecolabels
         L.esri.dynamicMapLayer({
             url: 'http://www.govmaps.eu/arcgis/rest/services/ICL/ICL_Energielabelatlas/MapServer',
-            opacity: 0.5,
+            opacity: 0.3,
             'crs': crs
         }).addTo(map);
 

@@ -37,13 +37,16 @@ app.controller('MainCtrl', ['$scope', '$http', '$resource', '$localStorage', '$w
   var hashId = '4g3j5b80j8ed061';
   // current selected question
   $scope.q = 0;
+  $scope.questComplete = false;
 
   $scope.selectedIndex = null;
   $scope.selectedAnswer = null;
   $scope.prefixes = ["s1"];
+  $scope.reply = null;
+  $scope.sessionReplies = [];
 
   $scope.answer = function () {
-    $scope.reply = null;
+
     if ($scope.selectedAnswer) {
       $scope.reply = {
         "residence": hashId,
@@ -72,6 +75,12 @@ app.controller('MainCtrl', ['$scope', '$http', '$resource', '$localStorage', '$w
       // default
       $scope.select($scope.questions[$scope.q], $scope.questions[$scope.q].answers[0]);
     }
+
+      console.log( $scope.sessionReplies);
+      console.log("DURIDUM2");
+      console.log($scope.reply);
+
+
     $http.post(api + 'residences/reply', $scope.reply)
     .success(function(data, status, headers, config) {
       console.log(data);
@@ -80,15 +89,22 @@ app.controller('MainCtrl', ['$scope', '$http', '$resource', '$localStorage', '$w
       console.error(data);
     });
     if ($scope.q < $scope.questions.length-1) {
+      $scope.questComplete = false;
       $scope.q++;
+    } else {
+        $scope.questComplete = true;
     }
   };
 
   $scope.toPreviousQuestion = function()
   {
-    if($scope.q > 0)
-    {
-      $scope.q--;
+    if($scope.q >= $scope.questions.length-1 && $scope.questComplete) {
+        $scope.questComplete = false;
+    } else {
+        if($scope.q > 0)
+        {
+            $scope.q--;
+        }
     }
   };
 
@@ -114,8 +130,8 @@ app.controller('MainCtrl', ['$scope', '$http', '$resource', '$localStorage', '$w
   $scope.select = function(question, answer){
     $scope.selectedIndex = (answer['id'] - question['answers'][0]['id']);
     $scope.selectedAnswer = answer;
-    console.log($scope.selectedAnswer);
-    console.log($scope.questions[$scope.q]);
+    $scope.sessionReplies[$scope.q] = $scope.selectedIndex;
+
     var newPrefix = "";
     if($scope.questions[$scope.q].title.length > 2) {
       newPrefix += "-";
