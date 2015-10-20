@@ -6,16 +6,21 @@ Route::group(['middleware' => 'cors'], function () {
     Route::get('api/residences/{id}', 'ResidenceController@show');
     Route::post('api/residences', 'ResidenceController@store');
     Route::post('api/residences/reply', 'ResidenceController@reply');
+   // Route::post('api/residences/reply/{id}/', 'ResidenceController@reply');
 });
 
-Route::get('', 'MapController@index');
+Route::get('', [
+    'as'    => 'map',
+    'uses'  => 'MapController@index'
+]);
+
 Route::post('location', 'MapController@location');
 Route::get('/questionnaire', [
 	'as' => 'questionnaire',
 	'uses' => 'ResidenceController@index'
 ]);
 
-Route::get('/tips', [
+Route::get('/tips/{id?}', [
 	'as' => 'tips',
 	'uses' => 'ResidenceController@tips'
 ]);

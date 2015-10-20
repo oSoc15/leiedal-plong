@@ -127,8 +127,8 @@
         L.WMS.tileLayer("http://grb.agiv.be/geodiensten/raadpleegdiensten/GRB-basiskaart/wmsgr?", {
             'tileSize': 512,
             'layers': 'GRB_BASISKAART',
-            'transparent': false,
-            'crs': crs
+            'transparent': false
+            //'crs': crs
         }).addTo(map);
 
         /* L.WMS.tileLayer("http://wms.agiv.be/ogc/wms/omkl?", {
@@ -140,8 +140,8 @@
         // add the map with the ecolabels
         L.esri.dynamicMapLayer({
             url: 'http://www.govmaps.eu/arcgis/rest/services/ICL/ICL_Energielabelatlas/MapServer',
-            opacity: 0.3,
-            'crs': crs
+            opacity: 0.3
+            //'crs': crs
         }).addTo(map);
 
         // check for enter in search bar

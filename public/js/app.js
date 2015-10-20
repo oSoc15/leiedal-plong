@@ -19,6 +19,7 @@ app.controller('MainCtrl', ['$scope', '$http', '$resource', '$localStorage', '$w
     hashId = residence['hashid'];
     Residence = $resource(api + 'residences/' + hashId);
     $scope.residence = Residence.query();
+    console.log($scope.residence);
   })
   .error(function(data, status, headers, config) {
     console.error(data);
@@ -31,11 +32,12 @@ app.controller('MainCtrl', ['$scope', '$http', '$resource', '$localStorage', '$w
   var Question = $resource(api + 'questions');
   $scope.questions = Question.query();
 
+
   // Get residence from api
   // Development hashid is filled in
   // var Residence = $resource(api + 'residences/4g3j5b80j8ed061');
-  console.log($scope.residence);
-    
+
+
   // current selected question
   $scope.q = 0;
   $scope.questComplete = false;
@@ -47,6 +49,7 @@ app.controller('MainCtrl', ['$scope', '$http', '$resource', '$localStorage', '$w
   $scope.sessionReplies = [];
 
   $scope.answer = function () {
+      console.log($scope.selectedAnswer);
 
     if ($scope.selectedAnswer) {
       $scope.reply = {
@@ -77,6 +80,9 @@ app.controller('MainCtrl', ['$scope', '$http', '$resource', '$localStorage', '$w
       $scope.select($scope.questions[$scope.q], $scope.questions[$scope.q].answers[0]);
     }
 
+    $scope.selectedAnswer = null;
+      console.log("replying");
+      console.log($scope.reply);
     $http.post(api + 'residences/reply', $scope.reply)
     .success(function(data, status, headers, config) {
       console.log(data);
@@ -143,7 +149,7 @@ app.controller('MainCtrl', ['$scope', '$http', '$resource', '$localStorage', '$w
 
     $scope.finish = function(link)
     {
-        $window.location.href = link;
+        $window.location.href = link + "/" + hashId;
     };
 
 }

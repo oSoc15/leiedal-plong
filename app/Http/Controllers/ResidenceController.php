@@ -115,16 +115,30 @@ class ResidenceController extends Controller
 
         $reply->save();
 
+        return response()->json(array(
+            'residence' => $residence
+        ));
+
+        /*
+         * nextQuestion no longer needed
         $nextQuestion = Question::findOrFail($question->next_question)->load('answers');
 
         return response()->json(array(
             'residence' => $residence,
             'question' => $nextQuestion
         ));
+        */
     }
 
-    public function tips()
+    public function tips($id = null)
     {
-        return View('tips');
+        $residence = null;
+        $score = null;
+
+        if($id) {
+            $residence = Residence::findOrFail(Hashids::decode($id))->load('replies.real_answers');
+        }
+
+        return View('tips', ['id' => $residence, 'score' => $score]);
     }
 }
