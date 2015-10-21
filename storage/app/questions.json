@@ -18,12 +18,12 @@
                         "weight": 1
                     },
                     {
-                        "title": "1 verdiep",
+                        "title": "1 verdieping",
                         "image": "",
                         "weight": 1
                     },
                     {
-                        "title": "2 of meer verdiepen",
+                        "title": "2 of meer verdiepingen",
                         "image": "",
                         "weight": 1
             }
@@ -40,12 +40,12 @@
                 "ignore": 0,
                 "answers": [
                     {
-                        "title": "Plat dak",
+                        "title": "Schuin dak",
                         "image": "",
                         "weight": 1
                     },
                     {
-                        "title": "Schuin dak",
+                        "title": "Plat dak",
                         "image": "",
                         "weight": 1
                     },
