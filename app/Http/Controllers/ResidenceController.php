@@ -100,13 +100,16 @@ class ResidenceController extends Controller
         if ($request->input('answers')) {
             foreach ($request->input('answers') as $answer) {
                 // fetch the answer of the reply
-                $found = Answer::findOrFail($answer['answer']);
+                $found = Answer::find($answer['answer']);
 
                 // fill the real_answer
                 $real_answer = new RealAnswer();
-                $real_answer->input = $request->input('input');
                 $real_answer->unknown = $request->input('unknown');
                 $real_answer->answer_id = $found->id;
+
+                if($answer['input']) {
+                    $real_answer->input = $answer['input'];
+                }
 
                 // persist answer
                 $reply->real_answers()->save($real_answer);

@@ -4,6 +4,7 @@ app.controller('TipCtrl', ['$scope', '$http', '$resource', '$localStorage', '$wi
     var api = app.api;
     var residence = localStorage.getItem('residence');
     var hashId = localStorage.getItem('hash');
+    $scope.hashId = hashId;
     $scope.tips = [];
     $scope.answers = [];
     $scope.loading = true;
@@ -37,7 +38,11 @@ app.controller('TipCtrl', ['$scope', '$http', '$resource', '$localStorage', '$wi
     function calculateScore(d) {
         var totaal = 0;
         for(var i = 0; i < d.replies.length; i++) {
-            totaal += d.replies[i].real_answers[0].answer.weight;
+            if(d.replies[i].real_answers[0].input) {
+                // Do stuff to calculate year score
+            } else {
+                totaal += d.replies[i].real_answers[0].answer.weight;
+            }
         }
         // Summation of all the answer weights, on which we will base our enery label calculations on
         $scope.score.totaal = totaal;

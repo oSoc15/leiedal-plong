@@ -90,7 +90,7 @@
                 "from": null,
                 "till": null,
                 "next_question": 9,
-                "type": 3,
+                "type": 2,
                 "ignore": 1,
                 "answers": [
                     {
@@ -127,7 +127,7 @@
                 "from": null,
                 "till": null,
                 "next_question": 10,
-                "type": 3,
+                "type": 2,
                 "ignore": 1,
                 "answers": [
                     {
@@ -188,7 +188,24 @@
                         "weight": 1
                     }
                 ]
-            }
+            },
+          {
+            "title": "bouwjaar",
+            "unknown": 1,
+            "description": "Wat is het bouwjaar van uw huis?",
+            "from": null,
+            "till": null,
+            "next_question": 11,
+            "type": 3,
+            "ignore": 1,
+            "answers": [
+              {
+                "title": "Bouwjaar",
+                "image": "",
+                "weight": ""
+              }
+            ]
+          }
         ]
     }
 ]

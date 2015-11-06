@@ -59,12 +59,16 @@
 		        </div>
 
 		        <div class="answers">
-		            <div ng-show="!questComplete" ng-repeat="(a, ans) in questions[q].answers" ng-click="select(questions[q], ans)" ng-class="{'answer-button':answers[questions[q].key]==ans.value, 'answer-selected': sessionReplies[q]==<%$index%>}">
+		            <div ng-show="!questComplete && questions[q].type=='button'" ng-repeat="(a, ans) in questions[q].answers" ng-click="select(questions[q], ans)" ng-class="{'answer-button':answers[questions[q].key]==ans.value, 'answer-selected': sessionReplies[q]==<%$index%>}">
 		                <img ng-src="<%getImageUrl($index)%>" alt="<%ans.image%>" class="answer-image answer-image-<%$index%>" >
 		                <span ng-bind="ans.title" class=""></span>
-	<!--	                <input ng-if="ans.type=='year'" type="range" ng-model="ans.value" min="1900" max="2000">
-		                <span ng-if="ans.type=='year'"><%ans.value%></span> -->
 		            </div>
+
+                    <div ng-show="!questComplete && questions[q].type=='slider'" ng-class="'answer-slider'">
+                        <span class="answer-slider-q">Bouwjaar</span>
+                        <span><% parsedYear %></span>
+                        <input ng-change="setYear(ans)" type="range" ng-model="ans.v" min="1900" max="2015" value="1960">
+                    </div>
 
                     <div ng-show="questComplete" ng-click="finish('{{ URL::route('tips') }}')" ng-class="'answer-button'">
                         <span class="">Bereken!</span>

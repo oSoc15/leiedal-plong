@@ -35,7 +35,7 @@
         <div ng-show="error">Er is iets fout gegaan. Gelieve een administrator te contacteren als het probleem zich blijft voortdoen.</div>
         <div ng-show="!loading && !error">
             <div class="tips-result">
-                <p>Uw adres: <b><% answers.street + ' ' + answers.number + ', ' + answers.city %></b></p>
+                <p>Uw adres: <b><% answers.street + ' ' + answers.number + ', ' + answers.city %></b> (id: <% hashId %>)</p>
                 <p>Uw energielabel is <b>Label <% score.label %></b>.</p>
                 <p>U behaalde een energiescore van <b><% score.totaal %> punten</b> (hoger is beter).</p>
             </div>
@@ -45,6 +45,7 @@
                 <div ng-repeat="r in answers.replies">
                     <% r.real_answers[0].answer.question.description %><br>
                     <% r.real_answers[0].answer.title %> (gewicht van <% r.real_answers[0].answer.weight %>)
+                    <span ng-if="r.real_answers[0].input">Jaar: <% r.real_answers[0].input %></span>
 
                 </div>
             </div>

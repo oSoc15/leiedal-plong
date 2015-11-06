@@ -175,7 +175,7 @@ no-link:hover {
 
         }
         // Button
-        .answer-button {
+        .answer-button, .answer-slider {
             cursor: pointer;
             position: relative;
             width: 200px;
@@ -189,24 +189,24 @@ no-link:hover {
             float: left;
             font-size: 20px;
 
-            &:hover {
-                background: #ddd;
-            }
-            
-
             @media #{$tablet} {
                 width: 100%;
                 float: none;
             }
         }
+
+        .answer-button:hover {
+            background: #ddd;
+        }
+
+
         // Selected instance of the answer 
         .answer-selected{
             background: #999;
         }
         @import 'answers';
-
-
     }
+
     .grow {
         @include flex-grow(4);
     }
