@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html ng-app="app">>
+<html ng-app="app">
 <head>
     <title>PLONG - Tips</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ asset('css/map.css') }}">
     <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600' rel='stylesheet' type='text/css'>
 </head>
 <body ng-controller="TipCtrl">
@@ -26,9 +27,29 @@
         </div><!--/.navbar-collapse -->
     </div>
 </nav>
-<div class="container map-wrapper">
-    <h1>U hebt de tip pagina bereikt</h1>
+<div class="container">
+    <div id="tips">
+        <h1>Resultaat</h1>
+        <hr>
+        <div ng-show="loading">Laden...</div>
+        <div ng-show="error">Er is iets fout gegaan. Gelieve een administrator te contacteren als het probleem zich blijft voortdoen.</div>
+        <div ng-show="!loading && !error">
+            <div class="tips-result">
+                <p>Uw adres: <b><% answers.street + ' ' + answers.number + ', ' + answers.city %></b></p>
+                <p>Uw energielabel is <b>Label <% score.label %></b>.</p>
+                <p>U behaalde een energiescore van <b><% score.totaal %> punten</b> (hoger is beter).</p>
+            </div>
+            <h2>Gepersonaliseerde Tips</h2>
+            <hr>
+            <div class="tips-tips">
+                <div ng-repeat="r in answers.replies">
+                    <% r.real_answers[0].answer.question.description %><br>
+                    <% r.real_answers[0].answer.title %> (gewicht van <% r.real_answers[0].answer.weight %>)
 
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 

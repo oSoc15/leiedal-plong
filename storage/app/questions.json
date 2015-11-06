@@ -32,7 +32,7 @@
             {
                 "title": "r",
                 "unknown": 1,
-                "description": "Welk soort dak heeft u",
+                "description": "Welk soort dak heeft u?",
                 "from": null,
                 "till": null,
                 "next_question": 5,
@@ -59,7 +59,7 @@
             {
                 "title": "Basement",
                 "unknown": 1,
-                "description": "Heeft u een kelder",
+                "description": "Heeft u een kelder?",
                 "from": null,
                 "till": null,
                 "next_question": 6,
@@ -123,7 +123,7 @@
             {
                 "title": "insulation-floor",
                 "unknown": 1,
-                "description": "Hoe is uw vloer geïsoleerd",
+                "description": "Hoe is uw vloer geïsoleerd?",
                 "from": null,
                 "till": null,
                 "next_question": 10,

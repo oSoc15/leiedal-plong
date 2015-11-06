@@ -136,6 +136,6 @@ class ResidenceController extends Controller
     }
 
     public function getAnswers($id) {
-        return Residence::findOrFail(Hashids::decode($id))->load('replies.real_answers.answer');
+        return Residence::findOrFail(Hashids::decode($id))->load('replies.real_answers.answer.question');
     }
 }

@@ -69,6 +69,7 @@ app.controller('MainCtrl', ['$scope', '$http', '$resource', '$localStorage', '$w
     $http.post(api + 'residences/reply', $scope.reply)
     .success(function(data, status, headers, config) {
       console.log(data);
+            console.log($scope.questions[$scope.q]);
     })
     .error(function(data, status, headers, config) {
       console.error(data);
