@@ -10,7 +10,7 @@ app.controller('TipCtrl', ['$scope', '$http', '$resource', '$localStorage', '$wi
     $scope.loading = true;
     $scope.error = false;
     $scope.score = {};
-
+        
     // If we have a residence in localstorage, load the answers and generate personalized tips
     if(hashId != null) {
         // Get residence from api

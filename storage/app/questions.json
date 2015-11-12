@@ -190,6 +190,117 @@
         ]
       },
       {
+        "title": "ramen",
+        "unknown": 1,
+        "description": "Wat voor ramen heeft uw huis?",
+        "from": null,
+        "till": null,
+        "next_question": 11,
+        "type": 2,
+        "ignore": 1,
+        "answers": [
+          {
+            "title": "Enkelvoudig glas",
+            "image": "n",
+            "weight": 1
+          },
+          {
+            "title": "Gewoon dubbel glas",
+            "image": "n",
+            "weight": 3
+          },
+          {
+            "title": "Hoogrendementsglas voor 2000",
+            "image": "n",
+            "weight": 4
+          },
+          {
+            "title": "Hoogrendementsglas na 2000",
+            "image": "n",
+            "weight": 5
+          },
+          {
+            "title": "Driedubbel glas",
+            "image": "n",
+            "weight": 6
+          },
+          {
+            "title": "Weet ik niet",
+            "image": "n",
+            "weight": 1
+          }
+        ]
+      },
+      {
+        "title": "ventilatie",
+        "unknown": 1,
+        "description": "Hoe ventileert u uw huis hoofdzakelijk?",
+        "from": null,
+        "till": null,
+        "next_question": 11,
+        "type": 2,
+        "ignore": 1,
+        "answers": [
+          {
+            "title": "Geen bijzonder systeem",
+            "image": "n",
+            "weight": 1
+          },
+          {
+            "title": "Ventilatieroosters aan ramen",
+            "image": "n",
+            "weight": 2
+          },
+          {
+            "title": "Mechanische ventilatie",
+            "image": "n",
+            "weight": 5
+          },
+          {
+            "title": "Balansventilatie met warmte recup",
+            "image": "n",
+            "weight": 3
+          },
+          {
+            "title": "Weet ik niet",
+            "image": "n",
+            "weight": 4
+          }
+        ]
+      },
+      {
+        "title": "renewable",
+        "unknown": 1,
+        "description": "Maakt u gebruik van hernieuwbare energie?",
+        "from": null,
+        "till": null,
+        "next_question": 11,
+        "type": 2,
+        "ignore": 1,
+        "answers": [
+          {
+            "title": "Zonneboiler",
+            "image": "n",
+            "weight": 3
+          },
+          {
+            "title": "Zonnepanelen",
+            "image": "n",
+            "weight": 3
+          },
+          {
+            "title": "Beide",
+            "image": "n",
+            "weight": 6
+          },
+          {
+            "title": "Geen",
+            "image": "n",
+            "weight": 1
+          }
+        ]
+      },
+      {
         "title": "bouwjaar",
         "unknown": 1,
         "description": "Wat is het bouwjaar van uw huis?",

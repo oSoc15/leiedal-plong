@@ -17,7 +17,7 @@
 		<div id="questionairepage">
 		    <div class="illustrationbox">
                 <img src="assets/platform.svg" />
-                <div prefixes="prefixes" building>
+                <div prefixes="prefixes" building id="visual_building">
 		            <img src="assets/images/main_home.svg" />
                 </div>
 		        <div class="label-leiedal"></div>
