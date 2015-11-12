@@ -34,19 +34,43 @@
         <div ng-show="loading">Laden...</div>
         <div ng-show="error">Er is iets fout gegaan. Gelieve een administrator te contacteren als het probleem zich blijft voortdoen.</div>
         <div ng-show="!loading && !error">
-            <div class="tips-result">
-                <p>Uw adres: <b><% answers.street + ' ' + answers.number + ', ' + answers.city %></b> (id: <% hashId %>)</p>
-                <p>Uw energielabel is <b>Label <% score.label %></b>.</p>
-                <p>U behaalde een energiescore van <b><% score.totaal %> punten</b> (hoger is beter).</p>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        Overzicht
+                    </h3>
+                </div>
+                <ul class="list-group">
+                    <li class="list-group-item">
+                    Uw adres: <b><% answers.street + ' ' + answers.number + ', ' + answers.city %></b>.
+                    </li><li class="list-group-item">
+                    Uw energielabel: <b>Label <% score.label %></b>.
+                    </li><li class="list-group-item">
+                    Energiescore: <b><% score.totaal %> punten</b> (hoger is beter).</li>
+                </ul>
             </div>
             <h2>Gepersonaliseerde Tips</h2>
             <hr>
             <div class="tips-tips">
                 <div ng-repeat="r in answers.replies">
-                    <% r.real_answers[0].answer.question.description %><br>
-                    <% r.real_answers[0].answer.title %> (gewicht van <% r.real_answers[0].answer.weight %>)
-                    <span ng-if="r.real_answers[0].input">Jaar: <% r.real_answers[0].input %></span>
-
+                    <div class="panel <% r.real_answers[0].colour %>">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">
+                                <% r.real_answers[0].answer.question.description %>
+                            </h3>
+                        </div>
+                        <ul class="list-group">
+                            <li class="list-group-item">
+                                <span ng-if="r.real_answers[0].input"><b>Uw antwoord:</b> <% r.real_answers[0].input %> <br></span>
+                                <span ng-if="!r.real_answers[0].input"><b>Uw antwoord:</b> <% r.real_answers[0].answer.title %> <br></span>
+                                <b>Gewicht:</b> <% r.real_answers[0].answer.weight %>
+                            </li>
+                        </ul>
+                        <div class="panel-body">
+                            <b>Tips:</b>
+                            Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

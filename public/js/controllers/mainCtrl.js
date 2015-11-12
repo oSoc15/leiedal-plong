@@ -50,6 +50,9 @@ app.controller('MainCtrl', ['$scope', '$http', '$resource', '$localStorage', '$w
             };
             $scope.selectedIndex = -1;
         } else {
+            if(!$scope.realYear && $scope.questions[$scope.q].type == 'slider') {
+                $scope.realYear = '1960';
+            }
             $scope.reply = {
                 "residence": hashId,
                 "question": $scope.questions[$scope.q].id,
@@ -62,7 +65,7 @@ app.controller('MainCtrl', ['$scope', '$http', '$resource', '$localStorage', '$w
                 "unknown": true
             };
             // default
-           // $scope.select($scope.questions[$scope.q], $scope.questions[$scope.q].answers[0]);
+            $scope.select($scope.questions[$scope.q], $scope.questions[$scope.q].answers[0]);
         }
         $scope.selectedAnswer = null;
 
@@ -112,21 +115,23 @@ app.controller('MainCtrl', ['$scope', '$http', '$resource', '$localStorage', '$w
     };
 
     $scope.select = function (question, answer) {
-        $scope.selectedIndex = (answer['id'] - question['answers'][0]['id']);
-        $scope.selectedAnswer = answer;
-        $scope.sessionReplies[$scope.q] = $scope.selectedIndex;
+        if(question.type != 'slider') {
+            $scope.selectedIndex = (answer['id'] - question['answers'][0]['id']);
+            $scope.selectedAnswer = answer;
+            $scope.sessionReplies[$scope.q] = $scope.selectedIndex;
 
-        var newPrefix = "";
+            var newPrefix = "";
 
-        if ($scope.questions[$scope.q].title.length > 2) {
-            newPrefix += "-";
-        }
+            if ($scope.questions[$scope.q].title.length > 2) {
+                newPrefix += "-";
+            }
 
-        newPrefix += $scope.questions[$scope.q].title + ($scope.selectedIndex + 1);
-        if ($scope.prefixes.length > $scope.q) {
-            $scope.prefixes[$scope.q + 1] = newPrefix;
-        } else {
-            $scope.prefixes.push(newPrefix);
+            newPrefix += $scope.questions[$scope.q].title + ($scope.selectedIndex + 1);
+            if ($scope.prefixes.length > $scope.q) {
+                $scope.prefixes[$scope.q + 1] = newPrefix;
+            } else {
+                $scope.prefixes.push(newPrefix);
+            }
         }
     }
 
