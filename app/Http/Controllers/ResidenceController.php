@@ -21,7 +21,7 @@ class ResidenceController extends Controller
      */
     public function index()
     {
-       return View('questionnaire'); 
+        return View('questionnaire');
     }
     /**
      * Store a newly created resource in storage.
@@ -32,10 +32,12 @@ class ResidenceController extends Controller
      */
     public function store(Request $request)
     {
+        // http://localhost:82/plong/public/api/residences?street=test&city=gent&number=5
+
         $validator = Validator::make($request->all(), [
             'street' => 'required',
             'city' => 'required',
-            'number' => 'required',
+            'number' => 'required'
         ]);
 
         if ($validator->fails()) {
@@ -55,6 +57,50 @@ class ResidenceController extends Controller
             'residence' => $residence,
             'question' => $question,
         ));
+    }
+
+
+    /**
+     * Display all the resources.
+     *
+     * @return Response
+     */
+    public function getAll()
+    {
+        $res = Residence::All()->load('replies.real_answers.answer.question');
+        $fres = [];
+
+        foreach($res as $k => $v) {
+
+            $item['Id'] = $v['id'];
+            $item['Adres Lang'] = $v['street'] . ' ' . $v['number'] . ', ' . $v['city'];
+            $item['Ecoscore'] = 0;
+            $item['Adres']['Straat'] = $v['street'];
+            $item['Adres']['Nummer'] = $v['number'];
+            $item['Adres']['Stad'] = $v['city'];
+
+            foreach($v['replies'] as $l => $w) {
+                $item['Bevraging'][$l]['Vraag'] =
+                    $w['real_answers'][0]['answer']['question']['description'];
+
+                if($w['real_answers'][0]['input']) {
+                    $item['Bevraging'][$l]['Antwoord'] =
+                        $w['real_answers'][0]['input'];
+                } else {
+                    $item['Bevraging'][$l]['Antwoord'] =
+                        $w['real_answers'][0]['answer']['title'];
+                }
+
+                $item['Bevraging'][$l]['Gewicht'] =
+                    $w['real_answers'][0]['answer']['weight'];
+
+                $item['Ecoscore'] += $w['real_answers'][0]['answer']['weight'];
+            }
+
+            $fres[$k] = $item;
+        }
+
+        return $fres;
     }
 
     /**
@@ -90,21 +136,28 @@ class ResidenceController extends Controller
 
         $reply = new Reply();
         $reply->question_id = $question->id;
+        $reply->residence_id = $residence->id;
+
+        $lastR = Reply::all()->last();
         $reply->save();
 
         $question->reply()->associate($reply);
+
         $residence->replies()->save($reply);
 
         if ($request->input('answers')) {
             foreach ($request->input('answers') as $answer) {
                 // fetch the answer of the reply
-                $found = Answer::findOrFail($answer['answer']);
+                $found = Answer::find($answer['answer']);
 
                 // fill the real_answer
                 $real_answer = new RealAnswer();
-                $real_answer->input = $request->input('input');
                 $real_answer->unknown = $request->input('unknown');
                 $real_answer->answer_id = $found->id;
+
+                if($answer['input']) {
+                    $real_answer->input = $answer['input'];
+                }
 
                 // persist answer
                 $reply->real_answers()->save($real_answer);
@@ -113,16 +166,27 @@ class ResidenceController extends Controller
 
         $reply->save();
 
+        return response()->json(array(
+            'residence' => $residence
+        ));
+
+        /*
+         * nextQuestion no longer needed
         $nextQuestion = Question::findOrFail($question->next_question)->load('answers');
 
         return response()->json(array(
             'residence' => $residence,
             'question' => $nextQuestion
         ));
+        */
     }
 
     public function tips()
     {
         return View('tips');
+    }
+
+    public function getAnswers($id) {
+        return Residence::findOrFail(Hashids::decode($id))->load('replies.real_answers.answer.question');
     }
 }
