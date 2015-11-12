@@ -59,6 +59,50 @@ class ResidenceController extends Controller
         ));
     }
 
+
+    /**
+     * Display all the resources.
+     *
+     * @return Response
+     */
+    public function getAll()
+    {
+        $res = Residence::All()->load('replies.real_answers.answer.question');
+        $fres = [];
+
+        foreach($res as $k => $v) {
+
+            $item['Id'] = $v['id'];
+            $item['Adres Lang'] = $v['street'] . ' ' . $v['number'] . ', ' . $v['city'];
+            $item['Ecoscore'] = 0;
+            $item['Adres']['Straat'] = $v['street'];
+            $item['Adres']['Nummer'] = $v['number'];
+            $item['Adres']['Stad'] = $v['city'];
+
+            foreach($v['replies'] as $l => $w) {
+                $item['Bevraging'][$l]['Vraag'] =
+                    $w['real_answers'][0]['answer']['question']['description'];
+
+                if($w['real_answers'][0]['input']) {
+                    $item['Bevraging'][$l]['Antwoord'] =
+                        $w['real_answers'][0]['input'];
+                } else {
+                    $item['Bevraging'][$l]['Antwoord'] =
+                        $w['real_answers'][0]['answer']['title'];
+                }
+
+                $item['Bevraging'][$l]['Gewicht'] =
+                    $w['real_answers'][0]['answer']['weight'];
+
+                $item['Ecoscore'] += $w['real_answers'][0]['answer']['weight'];
+            }
+
+            $fres[$k] = $item;
+        }
+
+        return $fres;
+    }
+
     /**
      * Display the specified resource.
      *

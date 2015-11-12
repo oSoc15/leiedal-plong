@@ -44,6 +44,9 @@ A question consist of multiple answers.
 Gives the specific information of the section.
 The answers bound to this question will also be shown.
 
+#### GET /api/residences
+
+Gives an overview of all residences that are in the system, with their score and other information.
 
 #### POST/api/residence
 

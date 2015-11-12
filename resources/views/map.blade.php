@@ -127,8 +127,8 @@
         L.WMS.tileLayer("http://grb.agiv.be/geodiensten/raadpleegdiensten/GRB-basiskaart/wmsgr?", {
             'tileSize': 512,
             'layers': 'GRB_BASISKAART',
-            'transparent': false
-            //'crs': crs
+            'transparent': false,
+            'crs': crs
         }).addTo(map);
 
         /* L.WMS.tileLayer("http://wms.agiv.be/ogc/wms/omkl?", {

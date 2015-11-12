@@ -4,6 +4,7 @@ Route::group(['middleware' => 'cors'], function () {
     Route::resource('api/questions', 'QuestionController', ['only' => ['index', 'show']]);
     Route::resource('api/sections', 'SectionController', ['only' => ['index', 'show']]);
     Route::get('api/residences/{id}', 'ResidenceController@show');
+    Route::get('api/residences', 'ResidenceController@getAll');
     Route::post('api/residences', 'ResidenceController@store');
     Route::post('api/residences/reply', 'ResidenceController@reply');
     Route::get('api/residences/answers/{id}', 'ResidenceController@getAnswers');
