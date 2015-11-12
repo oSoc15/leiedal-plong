@@ -1,211 +1,265 @@
 [
-    {
-        "title": "Gebouw",
-        "questions": [
-            {
-                "title": "f",
-                "unknown": 1,
-                "description": "Hoeveel verdiepingen telt uw huis?",
-                "from": null,
-                "till": null,
-                "next_question": 4,
-                "type": 2,
-                "ignore": 0,
-                "answers": [
-                    {
-                        "title": "Enkel gelijkvloers",
-                        "image": "",
-                        "weight": 1
-                    },
-                    {
-                        "title": "1 verdieping",
-                        "image": "",
-                        "weight": 1
-                    },
-                    {
-                        "title": "2 of meer verdiepingen",
-                        "image": "",
-                        "weight": 1
-            }
-        ]
-            },
-            {
-                "title": "r",
-                "unknown": 1,
-                "description": "Welk soort dak heeft u?",
-                "from": null,
-                "till": null,
-                "next_question": 5,
-                "type": 2,
-                "ignore": 0,
-                "answers": [
-                    {
-                        "title": "Schuin dak",
-                        "image": "",
-                        "weight": 1
-                    },
-                    {
-                        "title": "Plat dak",
-                        "image": "",
-                        "weight": 1
-                    },
-                    {
-                        "title": "Gemengd dak",
-                        "image": "",
-                        "weight": 1
-                    }
-                ]
-            },
-            {
-                "title": "Basement",
-                "unknown": 1,
-                "description": "Heeft u een kelder?",
-                "from": null,
-                "till": null,
-                "next_question": 6,
-                "type": 2,
-                "ignore": 1,
-                "answers": [
-                    {
-                        "title": "Ja",
-                        "image": "",
-                        "weight": 1
-                    },
-                    {
-                        "title": "Nee",
-                        "image": "",
-                        "weight": 1
-                    }
-                ]
-            }
-        ]
-    },
-    {
-        "title": "Isolatie",
-        "questions": [
-            {
-                "title": "insulation-wall",
-                "unknown": 1,
-                "description": "Hoe is uw gevel geïsoleerd?",
-                "from": null,
-                "till": null,
-                "next_question": 9,
-                "type": 2,
-                "ignore": 1,
-                "answers": [
-                    {
-                        "title": "Niet geïsoleerd",
-                        "image": "",
-                        "weight": 1
-                    },
-                    {
-                        "title": "Slecht geïsoleerd",
-                        "image": "",
-                        "weight": 1
-                    },
-                    {
-                        "title": "Matig geïsoleerd",
-                        "image": "",
-                        "weight": 1
-                    },
-                    {
-                        "title": "Goed geïsoleerd",
-                        "image": "",
-                        "weight": 1
-                    },
-                    {
-                        "title": "Perfect geïsoleerd",
-                        "image": "",
-                        "weight": 1
-                    }
-                ]
-            },
-            {
-                "title": "insulation-floor",
-                "unknown": 1,
-                "description": "Hoe is uw vloer geïsoleerd?",
-                "from": null,
-                "till": null,
-                "next_question": 10,
-                "type": 2,
-                "ignore": 1,
-                "answers": [
-                    {
-                        "title": "Niet geïsoleerd",
-                        "image": "",
-                        "weight": 1
-                    },
-                    {
-                        "title": "Beperkt geïsoleerd",
-                        "image": "",
-                        "weight": 1
-                    },
-                    {
-                        "title": "Goed geïsoleerd",
-                        "image": "",
-                        "weight": 1
-                    }
-                ]
-            },
-            {
-                "title": "heating",
-                "unknown": 1,
-                "description": "Hoe verwarmt u uw huis hoofdzakelijk?",
-                "from": null,
-                "till": null,
-                "next_question": 11,
-                "type": 2,
-                "ignore": 1,
-                "answers": [
-                    {
-                        "title": "Aardgas",
-                        "image": "",
-                        "weight": 1
-                    },
-                    {
-                        "title": "Stookolie",
-                        "image": "",
-                        "weight": 1
-                    },
-                    {
-                        "title": "Hernieuwbare energie (warmtepomp, houtpellets)",
-                        "image": "",
-                        "weight": 1
-                    },
-                    {
-                        "title": "Hout",
-                        "image": "",
-                        "weight": 1
-                    },
-                    {
-                        "title": "Elektriciteit",
-                        "image": "",
-                        "weight": 1
-                    },
-                    {
-                        "title": "Andere",
-                        "image": "",
-                        "weight": 1
-                    }
-                ]
-            },
+  {
+    "title": "Gebouw",
+    "questions": [
+      {
+        "title": "f",
+        "unknown": 1,
+        "description": "Hoeveel verdiepingen telt uw huis?",
+        "from": null,
+        "till": null,
+        "next_question": 4,
+        "type": 2,
+        "ignore": 0,
+        "answers": [
           {
-            "title": "bouwjaar",
-            "unknown": 1,
-            "description": "Wat is het bouwjaar van uw huis?",
-            "from": null,
-            "till": null,
-            "next_question": 11,
-            "type": 3,
-            "ignore": 1,
-            "answers": [
-              {
-                "title": "Bouwjaar",
-                "image": "",
-                "weight": ""
-              }
-            ]
+            "title": "Enkel gelijkvloers",
+            "image": "y",
+            "weight": 1
+          },
+          {
+            "title": "1 verdieping",
+            "image": "y",
+            "weight": 3
+          },
+          {
+            "title": "2 of meer verdiepingen",
+            "image": "y",
+            "weight": 5
           }
         ]
-    }
+      },
+      {
+        "title": "r",
+        "unknown": 1,
+        "description": "Welk soort dak heeft u?",
+        "from": null,
+        "till": null,
+        "next_question": 5,
+        "type": 2,
+        "ignore": 0,
+        "answers": [
+          {
+            "title": "Schuin dak",
+            "image": "y",
+            "weight": 1
+          },
+          {
+            "title": "Plat dak",
+            "image": "y",
+            "weight": 3
+          },
+          {
+            "title": "Gemengd dak",
+            "image": "y",
+            "weight": 5
+          }
+        ]
+      },
+      {
+        "title": "Basement",
+        "unknown": 1,
+        "description": "Heeft u een kelder?",
+        "from": null,
+        "till": null,
+        "next_question": 6,
+        "type": 2,
+        "ignore": 1,
+        "answers": [
+          {
+            "title": "Ja",
+            "image": "y",
+            "weight": 3
+          },
+          {
+            "title": "Nee",
+            "image": "y",
+            "weight": 1
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Isolatie",
+    "questions": [
+      {
+        "title": "insulation-wall",
+        "unknown": 1,
+        "description": "Hoe is uw gevel geïsoleerd?",
+        "from": null,
+        "till": null,
+        "next_question": 9,
+        "type": 2,
+        "ignore": 1,
+        "answers": [
+          {
+            "title": "Niet geïsoleerd",
+            "image": "y",
+            "weight": 1
+          },
+          {
+            "title": "Slecht geïsoleerd",
+            "image": "y",
+            "weight": 2
+          },
+          {
+            "title": "Matig geïsoleerd",
+            "image": "y",
+            "weight": 3
+          },
+          {
+            "title": "Goed geïsoleerd",
+            "image": "y",
+            "weight": 4
+          },
+          {
+            "title": "Perfect geïsoleerd",
+            "image": "y",
+            "weight": 5
+          }
+        ]
+      },
+      {
+        "title": "insulation-floor",
+        "unknown": 1,
+        "description": "Hoe is uw vloer geïsoleerd?",
+        "from": null,
+        "till": null,
+        "next_question": 10,
+        "type": 2,
+        "ignore": 1,
+        "answers": [
+          {
+            "title": "Niet geïsoleerd",
+            "image": "y",
+            "weight": 1
+          },
+          {
+            "title": "Beperkt geïsoleerd",
+            "image": "y",
+            "weight": 3
+          },
+          {
+            "title": "Goed geïsoleerd",
+            "image": "y",
+            "weight": 5
+          }
+        ]
+      },
+      {
+        "title": "heating",
+        "unknown": 1,
+        "description": "Hoe verwarmt u uw huis hoofdzakelijk?",
+        "from": null,
+        "till": null,
+        "next_question": 11,
+        "type": 2,
+        "ignore": 1,
+        "answers": [
+          {
+            "title": "Aardgas",
+            "image": "y",
+            "weight": 1
+          },
+          {
+            "title": "Stookolie",
+            "image": "y",
+            "weight": 2
+          },
+          {
+            "title": "Hernieuwbare energie (warmtepomp, houtpellets)",
+            "image": "y",
+            "weight": 5
+          },
+          {
+            "title": "Hout",
+            "image": "y",
+            "weight": 3
+          },
+          {
+            "title": "Elektriciteit",
+            "image": "y",
+            "weight": 4
+          },
+          {
+            "title": "Andere",
+            "image": "y",
+            "weight": 1
+          }
+        ]
+      },
+      {
+        "title": "bouwjaar",
+        "unknown": 1,
+        "description": "Wat is het bouwjaar van uw huis?",
+        "from": null,
+        "till": null,
+        "next_question": 11,
+        "type": 3,
+        "ignore": 1,
+        "answers": [
+          {
+            "title": "Bouwjaar",
+            "image": "n",
+            "weight": ""
+          }
+        ]
+      },
+      {
+        "title": "beb",
+        "unknown": 1,
+        "description": "Soort bebouwing?",
+        "from": null,
+        "till": null,
+        "next_question": 11,
+        "type": 2,
+        "ignore": 1,
+        "answers": [
+          {
+            "title": "Open",
+            "image": "n",
+            "weight": "2"
+          },
+          {
+            "title": "Gesloten",
+            "image": "n",
+            "weight": "6"
+          },
+          {
+            "title": "Halfopen",
+            "image": "n",
+            "weight": "4"
+          }
+        ]
+      },
+      {
+        "title": "opp",
+        "unknown": 1,
+        "description": "Wat is de bewoonbare oppervlakte?",
+        "from": null,
+        "till": null,
+        "next_question": 11,
+        "type": 2,
+        "ignore": 1,
+        "answers": [
+          {
+            "title": "Klein",
+            "image": "n",
+            "weight": "1"
+          },
+          {
+            "title": "Middel",
+            "image": "n",
+            "weight": "2"
+          },
+          {
+            "title": "Groot",
+            "image": "n",
+            "weight": "3"
+          }
+        ]
+      }
+    ]
+  }
 ]

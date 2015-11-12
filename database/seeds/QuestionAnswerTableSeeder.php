@@ -44,7 +44,8 @@ class QuestionAnswerTableSeeder extends Seeder
                     foreach ($question->answers as $answer) {
                         $cAnswer = Answer::create(array(
                             'title' => $answer->title,
-                            'weight' => $answer->weight
+                            'weight' => $answer->weight,
+                            'image' => $answer->image
                         ));
                         $cQuestion->answers()->save($cAnswer);
                     }

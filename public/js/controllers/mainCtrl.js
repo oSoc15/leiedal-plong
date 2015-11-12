@@ -34,54 +34,68 @@ app.controller('MainCtrl', ['$scope', '$http', '$resource', '$localStorage', '$w
     $scope.sessionReplies = [];
     $scope.parsedYear = 1960;
     $scope.realYear = '';
+    // Timer to prevent spamclicking of questions
+    $scope.qTimer = false;
 
     $scope.answer = function () {
-        if ($scope.selectedAnswer) {
-            $scope.reply = {
-                "residence": hashId,
-                "question": $scope.questions[$scope.q].id,
-                "answers": [
-                    {
-                        "answer": $scope.selectedAnswer['id'],
-                        "input": $scope.realYear
-                    }
-                ],
-                "unknown": false
-            };
-            $scope.selectedIndex = -1;
-        } else {
-            if(!$scope.realYear && $scope.questions[$scope.q].type == 'slider') {
-                $scope.realYear = '1960';
-            }
-            $scope.reply = {
-                "residence": hashId,
-                "question": $scope.questions[$scope.q].id,
-                "answers": [
-                    {
-                        "answer": $scope.questions[$scope.q].answers[0]['id'],
-                        "input": $scope.realYear
-                    }
-                ],
-                "unknown": true
-            };
-            // default
-            $scope.select($scope.questions[$scope.q], $scope.questions[$scope.q].answers[0]);
-        }
-        $scope.selectedAnswer = null;
 
-        $http.post(api + 'residences/reply', $scope.reply)
-            .success(function (data, status, headers, config) {
-                console.log(data);
-                console.log($scope.questions[$scope.q]);
-            })
-            .error(function (data, status, headers, config) {
-                console.error(data);
-            });
-        if ($scope.q < $scope.questions.length - 1) {
-            $scope.questComplete = false;
-            $scope.q++;
-        } else {
-            $scope.questComplete = true;
+        if(!$scope.qTimer && !$scope.questComplete) {
+            $scope.qTimer = true;
+
+            if ($scope.selectedAnswer) {
+                $scope.reply = {
+                    "residence": hashId,
+                    "question": $scope.questions[$scope.q].id,
+                    "answers": [
+                        {
+                            "answer": $scope.selectedAnswer['id'],
+                            "input": $scope.realYear
+                        }
+                    ],
+                    "unknown": false
+                };
+                $scope.selectedIndex = -1;
+            } else {
+
+                if(!$scope.realYear && $scope.questions[$scope.q].type == 'slider') {
+                    $scope.realYear = '1960';
+                }
+                $scope.reply = {
+                    "residence": hashId,
+                    "question": $scope.questions[$scope.q].id,
+                    "answers": [
+                        {
+                            "answer": $scope.questions[$scope.q].answers[0]['id'],
+                            "input": $scope.realYear
+                        }
+                    ],
+                    "unknown": true
+                };
+
+                $scope.realYear = '';
+                // default
+                $scope.select($scope.questions[$scope.q], $scope.questions[$scope.q].answers[0]);
+
+            }
+            $scope.selectedAnswer = null;
+
+            $http.post(api + 'residences/reply', $scope.reply)
+                .success(function (data, status, headers, config) {
+                    console.log(data);
+                    console.log($scope.questions[$scope.q]);
+                    $scope.qTimer = false;
+                })
+                .error(function (data, status, headers, config) {
+                    console.error(data);
+                    $scope.qTimer = false;
+                });
+
+            if ($scope.q < $scope.questions.length - 1) {
+                $scope.questComplete = false;
+                $scope.q++;
+            } else {
+                $scope.questComplete = true;
+            }
         }
     };
 
@@ -96,6 +110,7 @@ app.controller('MainCtrl', ['$scope', '$http', '$resource', '$localStorage', '$w
     };
 
     $scope.getImageUrl = function (index) {
+
         var str = "assets/";
         if ($scope.questions[$scope.q].title.length < 2) {
             angular.forEach($scope.prefixes, function (val, key) {
@@ -120,17 +135,19 @@ app.controller('MainCtrl', ['$scope', '$http', '$resource', '$localStorage', '$w
             $scope.selectedAnswer = answer;
             $scope.sessionReplies[$scope.q] = $scope.selectedIndex;
 
-            var newPrefix = "";
+            if(answer.image == 'y') {
+                var newPrefix = "";
 
-            if ($scope.questions[$scope.q].title.length > 2) {
-                newPrefix += "-";
-            }
+                if ($scope.questions[$scope.q].title.length > 2) {
+                    newPrefix += "-";
+                }
 
-            newPrefix += $scope.questions[$scope.q].title + ($scope.selectedIndex + 1);
-            if ($scope.prefixes.length > $scope.q) {
-                $scope.prefixes[$scope.q + 1] = newPrefix;
-            } else {
-                $scope.prefixes.push(newPrefix);
+                newPrefix += $scope.questions[$scope.q].title + ($scope.selectedIndex + 1);
+                if ($scope.prefixes.length > $scope.q) {
+                    $scope.prefixes[$scope.q + 1] = newPrefix;
+                } else {
+                    $scope.prefixes.push(newPrefix);
+                }
             }
         }
     }

@@ -21,7 +21,7 @@ class ResidenceController extends Controller
      */
     public function index()
     {
-       return View('questionnaire'); 
+        return View('questionnaire');
     }
     /**
      * Store a newly created resource in storage.
@@ -92,9 +92,13 @@ class ResidenceController extends Controller
 
         $reply = new Reply();
         $reply->question_id = $question->id;
+        $reply->residence_id = $residence->id;
+
+        $lastR = Reply::all()->last();
         $reply->save();
 
         $question->reply()->associate($reply);
+
         $residence->replies()->save($reply);
 
         if ($request->input('answers')) {

@@ -54,13 +54,13 @@
 		                <!-- shows information about the question -->
 		                <li id="info" ng-click="" ng-disabled="" class="flex-item icon-info"></li>
 		                <!-- navigate next question -->
-		                <li id="next" ng-disabled="q>=questions.length" ng-click="answer()" ng-style="{opacity : ((q>=questions.length || questComplete) && '0.3') || '1'}" class="flex-item icon-right"></li>
+		                <li id="next" ng-disabled="q>=questions.length || qTimer" ng-click="answer()" ng-style="{opacity : ((q>=questions.length || questComplete) && '0.3') || '1'}" class="flex-item icon-right"></li>
                     </ul>
 		        </div>
 
 		        <div class="answers">
 		            <div ng-show="!questComplete && questions[q].type=='button'" ng-repeat="(a, ans) in questions[q].answers" ng-click="select(questions[q], ans)" ng-class="{'answer-button':answers[questions[q].key]==ans.value, 'answer-selected': sessionReplies[q]==<%$index%>}">
-		                <img ng-src="<%getImageUrl($index)%>" alt="<%ans.image%>" class="answer-image answer-image-<%$index%>" >
+                        <img ng-show="ans.image == 'y'" ng-src="<%getImageUrl($index)%>" alt="<%ans.image%>" class="answer-image answer-image-<%$index%>" >
 		                <span ng-bind="ans.title" class=""></span>
 		            </div>
 
