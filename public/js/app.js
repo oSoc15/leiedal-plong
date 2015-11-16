@@ -1,7 +1,7 @@
 'use strict';
 
 // You will have to change this url to the url of the api
-var api = 'http://localhost:82/plong/public/api/';
+var api = 'api/';
 
 var app = angular.module('app', ['ngResource', 'ngStorage'], function($interpolateProvider) {
     $interpolateProvider.startSymbol('<%');
