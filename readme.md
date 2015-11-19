@@ -12,7 +12,7 @@ A good PHP development environment is [Homestead](http://laravel.com/docs/5.1/ho
 
 1. Clone this repo from `https://github.com/oSoc15/leiedal-plong`
 2. Run `composer install` from the root directory of the cloned repository 
-3. Change your environment to your credentials
+3. Change your environment to your credentials (located in rootfolder/.env)
 3. Run `php artisan migrate` to create the database tables and relationships
 4. Run `php artisan db:seed` to seed the tables
 5. Run `npm install -g gulp bower` to install to build system and client package manager
@@ -22,17 +22,55 @@ A good PHP development environment is [Homestead](http://laravel.com/docs/5.1/ho
 
 ---
 
+### Important application file structure (Back End)
+
+**Root**
+- **app/** (the Laravel application)
+  - Http/
+    - **Controllers/** (folder with all the Laravel Controllers)
+    - **routes.php** (file where URL routes are defined)
+  - **Models/** (folder where are the database Models are defined)
+- config/ 
+  - **app.php** (file where some configurations can to be made)
+- database/
+  - **migrations/** (database migrations are stored here)
+  - **seeds/** (database seeds are stored here)
+- resources/
+  - db
+    - **plong_default.sql** (default database schema)
+  - views/
+    - **map.blade.php** (map view, Laravel based)
+    - **questionnaire.blade.php** (questionnaire view, Laravel + AngularJS)
+    - **tips.blade.php** (tips view, Laravel + AngularJS)
+- storage/
+  - app/
+    - **questions.json** (file where the questions and answers are stored, this file is used when reseeding a database)
+- **.env** (environment file where you define your database credentials)
+
+---
+
+### Important application file structure (Front End)
+
+**Root**
+- public/
+  - **assets/** (folder containing all the assets, such as the images for the house)
+  - **css/** (folder containing CSS files, generated with from the Sass files)
+  - **sass/** (folder containing all Sass files, these are concatinated to CSS files)
+  - js/
+    - controllers/ (folder containing the AngularJS controllers)
+      - **mainCtrl.js** (controller used in the questionnaire view)
+      - **tipCtrl.js** (controller used in the tips view)
+    - **plugin/** (folder containing the extra plugins such as LeafletSRI and LeafletWMS)
+  - **app.js** (base AngularJS module is defined here, loaded on all views that use AngularJS)
+- resources/
+  - views/
+    - **map.blade.php** (map view, Laravel based)
+    - **questionnaire.blade.php** (questionnaire view, Laravel + AngularJS)
+    - **tips.blade.php** (tips view, Laravel + AngularJS)
+
+---
+
 ### API Routes
-
-#### GET /api/sections
-
-This shows all the sections of the API.
-The sections consist of multiple questions.
-
-#### GET /api/sections/id
-
-Gives the specific information of the section.
-
 
 #### GET /api/questions
 
