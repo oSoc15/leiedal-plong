@@ -8,7 +8,7 @@ class Question extends Eloquent
 {
     protected $table = 'questions';
 
-    protected $fillable = ['title' , 'description', 'unknown', 'next_question', 'ignore'];
+    protected $fillable = ['title' , 'description', 'unknown'];
 
     protected $hidden = ['question_type', 'section_id'];
 
@@ -34,16 +34,6 @@ class Question extends Eloquent
     public function getTypeAttribute()
     {
         return QuestionType::find($this->question_type)->getAttribute('type');
-    }
-
-    public function nextQuestion()
-    {
-        return $this->hasOne('App\Models\Question');
-    }
-
-    public function getNextQuestion()
-    {
-        return Question::find($this->next_question);
     }
 
     public function getSectionAttribute()

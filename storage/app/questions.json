@@ -3,14 +3,107 @@
     "title": "Gebouw",
     "questions": [
       {
+        "title": "beb",
+        "unknown": 1,
+        "description": "Soort bebouwing?",
+        "from": null,
+        "till": null,
+        "type": 2,
+        "answers": [
+          {
+            "title": "Open",
+            "image": "n",
+            "weight": "2"
+          },
+          {
+            "title": "Gesloten",
+            "image": "n",
+            "weight": "6"
+          },
+          {
+            "title": "Halfopen",
+            "image": "n",
+            "weight": "4"
+          }
+        ]
+      },
+      {
+        "title": "bouwjaar",
+        "unknown": 1,
+        "description": "Wat is het bouwjaar van uw huis?",
+        "from": null,
+        "till": null,
+        "type": 2,
+        "answers": [
+          {
+            "title": "Voor 1920",
+            "image": "n",
+            "weight": "1"
+          },
+          {
+            "title": "1921-1945",
+            "image": "n",
+            "weight": 2
+          },
+          {
+            "title": "1946-1970",
+            "image": "n",
+            "weight": 3
+          },
+          {
+            "title": "1971-1985",
+            "image": "n",
+            "weight": 4
+          },
+          {
+            "title": "1986-1995",
+            "image": "n",
+            "weight": 5
+          },
+          {
+            "title": "1996-2005",
+            "image": "n",
+            "weight": 6
+          },
+          {
+            "title": "Na 2005",
+            "image": "n",
+            "weight": 7
+          }
+        ]
+      },
+      {
+        "title": "opp",
+        "unknown": 1,
+        "description": "Wat is de bewoonbare oppervlakte?",
+        "from": null,
+        "till": null,
+        "type": 2,
+        "answers": [
+          {
+            "title": "Klein",
+            "image": "n",
+            "weight": "1"
+          },
+          {
+            "title": "Middel",
+            "image": "n",
+            "weight": "2"
+          },
+          {
+            "title": "Groot",
+            "image": "n",
+            "weight": "3"
+          }
+        ]
+      },
+      {
         "title": "f",
         "unknown": 1,
         "description": "Hoeveel verdiepingen telt uw huis?",
         "from": null,
         "till": null,
-        "next_question": 4,
         "type": 2,
-        "ignore": 0,
         "answers": [
           {
             "title": "Enkel gelijkvloers",
@@ -35,9 +128,7 @@
         "description": "Welk soort dak heeft u?",
         "from": null,
         "till": null,
-        "next_question": 5,
         "type": 2,
-        "ignore": 0,
         "answers": [
           {
             "title": "Schuin dak",
@@ -62,9 +153,7 @@
         "description": "Heeft u een kelder?",
         "from": null,
         "till": null,
-        "next_question": 6,
         "type": 2,
-        "ignore": 1,
         "answers": [
           {
             "title": "Ja",
@@ -89,9 +178,7 @@
         "description": "Hoe is uw gevel geïsoleerd?",
         "from": null,
         "till": null,
-        "next_question": 9,
         "type": 2,
-        "ignore": 1,
         "answers": [
           {
             "title": "Niet geïsoleerd",
@@ -126,9 +213,7 @@
         "description": "Hoe is uw vloer geïsoleerd?",
         "from": null,
         "till": null,
-        "next_question": 10,
         "type": 2,
-        "ignore": 1,
         "answers": [
           {
             "title": "Niet geïsoleerd",
@@ -153,9 +238,7 @@
         "description": "Hoe verwarmt u uw huis hoofdzakelijk?",
         "from": null,
         "till": null,
-        "next_question": 11,
         "type": 2,
-        "ignore": 1,
         "answers": [
           {
             "title": "Aardgas",
@@ -195,9 +278,7 @@
         "description": "Wat voor ramen heeft uw huis?",
         "from": null,
         "till": null,
-        "next_question": 11,
         "type": 2,
-        "ignore": 1,
         "answers": [
           {
             "title": "Enkelvoudig glas",
@@ -237,9 +318,7 @@
         "description": "Hoe ventileert u uw huis hoofdzakelijk?",
         "from": null,
         "till": null,
-        "next_question": 11,
         "type": 2,
-        "ignore": 1,
         "answers": [
           {
             "title": "Geen bijzonder systeem",
@@ -274,9 +353,7 @@
         "description": "Maakt u gebruik van hernieuwbare energie?",
         "from": null,
         "till": null,
-        "next_question": 11,
         "type": 2,
-        "ignore": 1,
         "answers": [
           {
             "title": "Zonneboiler",
@@ -297,77 +374,6 @@
             "title": "Geen",
             "image": "n",
             "weight": 1
-          }
-        ]
-      },
-      {
-        "title": "bouwjaar",
-        "unknown": 1,
-        "description": "Wat is het bouwjaar van uw huis?",
-        "from": null,
-        "till": null,
-        "next_question": 11,
-        "type": 3,
-        "ignore": 1,
-        "answers": [
-          {
-            "title": "Bouwjaar",
-            "image": "n",
-            "weight": ""
-          }
-        ]
-      },
-      {
-        "title": "beb",
-        "unknown": 1,
-        "description": "Soort bebouwing?",
-        "from": null,
-        "till": null,
-        "next_question": 11,
-        "type": 2,
-        "ignore": 1,
-        "answers": [
-          {
-            "title": "Open",
-            "image": "n",
-            "weight": "2"
-          },
-          {
-            "title": "Gesloten",
-            "image": "n",
-            "weight": "6"
-          },
-          {
-            "title": "Halfopen",
-            "image": "n",
-            "weight": "4"
-          }
-        ]
-      },
-      {
-        "title": "opp",
-        "unknown": 1,
-        "description": "Wat is de bewoonbare oppervlakte?",
-        "from": null,
-        "till": null,
-        "next_question": 11,
-        "type": 2,
-        "ignore": 1,
-        "answers": [
-          {
-            "title": "Klein",
-            "image": "n",
-            "weight": "1"
-          },
-          {
-            "title": "Middel",
-            "image": "n",
-            "weight": "2"
-          },
-          {
-            "title": "Groot",
-            "image": "n",
-            "weight": "3"
           }
         ]
       }

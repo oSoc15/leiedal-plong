@@ -36,7 +36,6 @@ class QuestionAnswerTableSeeder extends Seeder
                     'description' => $question->description,
                     'from' => $question->from,
                     'till' => $question->till,
-                    'next_question' => $question->next_question,
                     'question_type' => $question->type
                 ));
 

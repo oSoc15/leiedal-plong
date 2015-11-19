@@ -4,8 +4,8 @@
 	<head>
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-		<title ng-bind="pageTitle">Vragenlijst</title>
-		<meta name="description" content="Plong app">
+		<title ng-bind="pageTitle">PLONG - Vragenlijst</title>
+		<meta name="description" content="Plong applicatie: vragenlijst">
 		<meta name="viewport" content="width=device-width, user-scalable=no">
 		<meta name="apple-mobile-web-app-c0.apable" content="yes">
 		<meta name="mobile-web-app-capable" content="yes">
@@ -44,15 +44,22 @@
 		            <ul class="flex-container">
 		                <!-- navigate previous question -->
 		                <li id="previous" ng-click="q==0 || toPreviousQuestion()" ng-disabled="q==0" ng-style="{opacity : ((q==0) && '0.3') || '1'}" class="flex-item icon-left"></li>
+                        
 		                <!-- all questions -->
-		                <li id="overview" ng-click="" ng-disabled="q==0" class="flex-item icon-overview"></li>
+		                <!--
+                            <li id="overview" ng-click="" ng-disabled="q==0" class="flex-item icon-overview"></li>
+                            -->
 		                <!-- shows questions -->
 		                <li id="question"class="flex-item grow">
                             <p ng-bind="questions[q].description" ng-show="!questComplete"></p>
                             <p ng-show="questComplete">Bereken uw score</p>
                         </li>
+                        
 		                <!-- shows information about the question -->
-		                <li id="info" ng-click="" ng-disabled="" class="flex-item icon-info"></li>
+		                <!--
+                            <li id="info" ng-click="" ng-disabled="" class="flex-item icon-info"></li> 
+                            -->
+                        
 		                <!-- navigate next question -->
 		                <li id="next" ng-disabled="q>=questions.length || qTimer" ng-click="answer()" ng-style="{opacity : ((q>=questions.length || questComplete) && '0.3') || '1'}" class="flex-item icon-right"></li>
                     </ul>

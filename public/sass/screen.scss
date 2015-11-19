@@ -212,11 +212,13 @@ no-link:hover {
     }
     .icon-left {
         background-image: url("../assets/images/arrow-left.svg");
+        background-color: $grey;
         background-repeat: no-repeat;
         background-position: center center;
     }
     .icon-right {
         background-image: url("../assets/images/arrow-right.svg");
+        background-color: $grey;
         background-repeat: no-repeat;
         background-position: center center;
     }
