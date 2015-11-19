@@ -1,7 +1,10 @@
 'use strict';
 
-// You will have to change this url to the url of the api
-var api = 'http://localhost:82/plong/public/api/';
+/**
+ * Base angular module ('app')
+ * Only contains a directive to build the house image as seen in the questionnaire
+ */
+var api = 'api/';
 
 var app = angular.module('app', ['ngResource', 'ngStorage'], function($interpolateProvider) {
     $interpolateProvider.startSymbol('<%');
@@ -13,7 +16,7 @@ var app = angular.module('app', ['ngResource', 'ngStorage'], function($interpola
 app.directive('building', function()
 {
   return {
-    restrict: "A",
+    restrict: 'A',
     scope: {
       'prefixes': '='
     },
@@ -24,8 +27,8 @@ app.directive('building', function()
       },
       function(newVal, oldVal) {
         if(newVal) {
-          var str = "";
-          element.html("");
+          var str = '';
+          element.html('');
           angular.forEach(newVal, function (val, key) {
             if(val.length < 3) {
               str += val;

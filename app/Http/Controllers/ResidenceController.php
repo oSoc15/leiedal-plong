@@ -169,16 +169,6 @@ class ResidenceController extends Controller
         return response()->json(array(
             'residence' => $residence
         ));
-
-        /*
-         * nextQuestion no longer needed
-        $nextQuestion = Question::findOrFail($question->next_question)->load('answers');
-
-        return response()->json(array(
-            'residence' => $residence,
-            'question' => $nextQuestion
-        ));
-        */
     }
 
     public function tips()

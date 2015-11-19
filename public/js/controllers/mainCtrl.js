@@ -29,7 +29,7 @@ app.controller('MainCtrl', ['$scope', '$http', '$resource', '$localStorage', '$w
 
     $scope.selectedIndex = null;
     $scope.selectedAnswer = null;
-    $scope.prefixes = ["s1"];
+    $scope.prefixes = ['s1'];
     $scope.reply = null;
     $scope.sessionReplies = [];
     $scope.parsedYear = 1960;
@@ -37,39 +37,46 @@ app.controller('MainCtrl', ['$scope', '$http', '$resource', '$localStorage', '$w
     // Timer to prevent spamclicking of questions
     $scope.qTimer = false;
 
+    /**
+     * Function called when going to the next question
+     */
     $scope.answer = function () {
-
+        // Check if the qTimer is false, to prevent spam-clicking without waiting for the application to handle everything
         if(!$scope.qTimer && !$scope.questComplete) {
             $scope.qTimer = true;
 
+            // If an answer is selected, store the answer in the $scope.reply variable
             if ($scope.selectedAnswer) {
                 $scope.reply = {
-                    "residence": hashId,
-                    "question": $scope.questions[$scope.q].id,
-                    "answers": [
+                    'residence': hashId,
+                    'question': $scope.questions[$scope.q].id,
+                    'answers': [
                         {
-                            "answer": $scope.selectedAnswer['id'],
-                            "input": $scope.realYear
+                            'answer': $scope.selectedAnswer['id'],
+                            'input': $scope.realYear
                         }
                     ],
-                    "unknown": false
+                    'unknown': false
                 };
                 $scope.selectedIndex = -1;
+                
+                // If NO answer is selected, select the first answer by default
             } else {
 
                 if(!$scope.realYear && $scope.questions[$scope.q].type == 'slider') {
                     $scope.realYear = '1960';
                 }
+                
                 $scope.reply = {
-                    "residence": hashId,
-                    "question": $scope.questions[$scope.q].id,
-                    "answers": [
+                    'residence': hashId,
+                    'question': $scope.questions[$scope.q].id,
+                    'answers': [
                         {
-                            "answer": $scope.questions[$scope.q].answers[0]['id'],
-                            "input": $scope.realYear
+                            'answer': $scope.questions[$scope.q].answers[0]['id'],
+                            'input': $scope.realYear
                         }
                     ],
-                    "unknown": true
+                    'unknown': true
                 };
 
                 $scope.realYear = '';
@@ -79,10 +86,11 @@ app.controller('MainCtrl', ['$scope', '$http', '$resource', '$localStorage', '$w
             }
             $scope.selectedAnswer = null;
 
+            // Send the answer to the database, reset timer after this query is completed
             $http.post(api + 'residences/reply', $scope.reply)
                 .success(function (data, status, headers, config) {
-                    console.log(data);
-                    console.log($scope.questions[$scope.q]);
+                    // console.log(data);
+                    // console.log($scope.questions[$scope.q]);
                     $scope.qTimer = false;
                 })
                 .error(function (data, status, headers, config) {
@@ -99,6 +107,9 @@ app.controller('MainCtrl', ['$scope', '$http', '$resource', '$localStorage', '$w
         }
     };
 
+    /**
+     * Function called when going back 1 question
+     */
     $scope.toPreviousQuestion = function () {
         if ($scope.q >= $scope.questions.length - 1 && $scope.questComplete) {
             $scope.questComplete = false;
@@ -108,54 +119,69 @@ app.controller('MainCtrl', ['$scope', '$http', '$resource', '$localStorage', '$w
             }
         }
     };
-
+    
+    /**
+     * Function called to construct the image URLs used for decorating the answer buttons, and the house.
+     */
     $scope.getImageUrl = function (index) {
-
-        var str = "assets/";
-        if ($scope.questions[$scope.q].title.length < 2) {
-            angular.forEach($scope.prefixes, function (val, key) {
-                if (key <= $scope.q) {
-                    str += val;
-                }
-            });
-            return str + $scope.questions[$scope.q].title + (index + 1) + ".svg";
-        }
-        else {
-            if ($scope.questions[$scope.q].title == 'solar') {
-                return str + "s1f1r1-" + $scope.questions[$scope.q].title + "1.svg";
+        var str = 'assets/';
+        
+        if($scope.questions[$scope.q].answers[0].image == 'y') {
+            
+            if ($scope.questions[$scope.q].title.length < 2) {
+                angular.forEach($scope.prefixes, function (val, key) {
+                    if (key <= $scope.q) {
+                        str += val;
+                    }
+                });
+                return str + $scope.questions[$scope.q].title + (index + 1) + ".svg";
+                
             } else {
-                return str + "s1-" + $scope.questions[$scope.q].title + ".svg";
+                
+                if ($scope.questions[$scope.q].title == 'solar') {
+                    return str + 's1f1r1-' + $scope.questions[$scope.q].title + '1.svg';
+                } else {
+                    return str + 's1-' + $scope.questions[$scope.q].title + '.svg';
+                }
             }
         }
     };
 
+    /**
+     * Function called when selecting an answer.
+     * This will also update the prefixes which are needed to build the house.
+     */
     $scope.select = function (question, answer) {
         if(question.type != 'slider') {
             $scope.selectedIndex = (answer['id'] - question['answers'][0]['id']);
             $scope.selectedAnswer = answer;
             $scope.sessionReplies[$scope.q] = $scope.selectedIndex;
-
+          
             if(answer.image == 'y') {
-                var newPrefix = "";
+               
+                var newPrefix = '';
 
                 if ($scope.questions[$scope.q].title.length > 2) {
-                    newPrefix += "-";
+                    newPrefix += '-';
                 }
 
                 newPrefix += $scope.questions[$scope.q].title + ($scope.selectedIndex + 1);
-                if ($scope.prefixes.length > $scope.q) {
-                    $scope.prefixes[$scope.q + 1] = newPrefix;
-                } else {
-                    $scope.prefixes.push(newPrefix);
-                }
+
+                $scope.prefixes[$scope.q + 1] = newPrefix;
             }
         }
     }
 
+    /**
+     * Function called when finishing the questionnaire, and redirect to Tips page
+     */
     $scope.finish = function (link) {
         $window.location.href = link;
     };
 
+    /**
+     * Function called when sliding the year slider (not used anymore)
+     */
     $scope.setYear = function (a) {
         $scope.realYear = a.v;
         if (a.v <= 1920) {
