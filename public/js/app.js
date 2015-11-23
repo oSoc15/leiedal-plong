@@ -33,8 +33,7 @@ app.directive('building', function()
             if(val.length < 3) {
               str += val;
               element.append('<img src="assets/' + str + '.svg" />');
-            }
-            else {
+            } else {
               if(val.indexOf('solar') > -1) {
                 element.append('<img src="assets/s1f1r1-'+ str + '1.svg" />');
               } else {

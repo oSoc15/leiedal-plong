@@ -5,10 +5,27 @@ Determine your energy label through an interactive platform
 
 ---
 
+### Server Requirements
+
+- PHP >= 5.5.9
+- OpenSSL PHP Extension
+- PDO PHP Extension
+- Mbstring PHP Extension
+- Tokenizer PHP Extension
+- Database (one of these)
+  - MySQL
+  - Postgres
+  - SQLite
+  - SQL Server
+
+---
+
 ### Getting up and running
+
 If this is the first time that you use laravel, check out the [getting started guide](http://laravel.com/docs/5.1/installation) from laravel.
 
 A good PHP development environment is [Homestead](http://laravel.com/docs/5.1/homestead).
+
 
 1. Clone this repo from `https://github.com/oSoc15/leiedal-plong`
 2. Run `composer install` from the root directory of the cloned repository 
@@ -22,53 +39,11 @@ A good PHP development environment is [Homestead](http://laravel.com/docs/5.1/ho
 
 ---
 
-### Important application file structure (Back End)
-
-**Root**
-- **app/** (the Laravel application)
-  - Http/
-    - **Controllers/** (folder with all the Laravel Controllers)
-    - **routes.php** (file where URL routes are defined)
-  - **Models/** (folder where are the database Models are defined)
-- config/ 
-  - **app.php** (file where some configurations can to be made)
-- database/
-  - **migrations/** (database migrations are stored here)
-  - **seeds/** (database seeds are stored here)
-- resources/
-  - db
-    - **plong_default.sql** (default database schema)
-  - views/
-    - **map.blade.php** (map view, Laravel based)
-    - **questionnaire.blade.php** (questionnaire view, Laravel + AngularJS)
-    - **tips.blade.php** (tips view, Laravel + AngularJS)
-- storage/
-  - app/
-    - **questions.json** (file where the questions and answers are stored, this file is used when reseeding a database)
-- **.env** (environment file where you define your database credentials)
+### Manual
 
 ---
 
-### Important application file structure (Front End)
-
-**Root**
-- public/
-  - **assets/** (folder containing all the assets, such as the images for the house)
-  - **css/** (folder containing CSS files, generated with from the Sass files)
-  - **sass/** (folder containing all Sass files, these are concatinated to CSS files)
-  - js/
-    - controllers/ (folder containing the AngularJS controllers)
-      - **mainCtrl.js** (controller used in the questionnaire view)
-      - **tipCtrl.js** (controller used in the tips view)
-    - **plugin/** (folder containing the extra plugins such as LeafletSRI and LeafletWMS)
-  - **app.js** (base AngularJS module is defined here, loaded on all views that use AngularJS)
-- resources/
-  - views/
-    - **map.blade.php** (map view, Laravel based)
-    - **questionnaire.blade.php** (questionnaire view, Laravel + AngularJS)
-    - **tips.blade.php** (tips view, Laravel + AngularJS)
-
----
+The manual can be found here: [Manual](/docs/manual.md).
 
 ### API Routes
 
