@@ -29,7 +29,7 @@ A good PHP development environment is [Homestead](http://laravel.com/docs/5.1/ho
 
 1. Clone this repo from `https://github.com/oSoc15/leiedal-plong`
 2. Run `composer install` from the root directory of the cloned repository 
-3. Change your environment to your credentials (located in rootfolder/.env)
+3. Change your environment to your credentials (copy env.example, rename to .env and fill out your credentials)
 3. Run `php artisan migrate` to create the database tables and relationships
 4. Run `php artisan db:seed` to seed the tables
 5. Run `npm install -g gulp bower` to install to build system and client package manager
