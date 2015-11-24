@@ -5,14 +5,31 @@ Determine your energy label through an interactive platform
 
 ---
 
+### Server Requirements
+
+- PHP >= 5.5.9
+- OpenSSL PHP Extension
+- PDO PHP Extension
+- Mbstring PHP Extension
+- Tokenizer PHP Extension
+- Database (one of these)
+  - MySQL
+  - Postgres
+  - SQLite
+  - SQL Server
+
+---
+
 ### Getting up and running
+
 If this is the first time that you use laravel, check out the [getting started guide](http://laravel.com/docs/5.1/installation) from laravel.
 
 A good PHP development environment is [Homestead](http://laravel.com/docs/5.1/homestead).
 
+
 1. Clone this repo from `https://github.com/oSoc15/leiedal-plong`
 2. Run `composer install` from the root directory of the cloned repository 
-3. Change your environment to your credentials
+3. Change your environment to your credentials (located in rootfolder/.env)
 3. Run `php artisan migrate` to create the database tables and relationships
 4. Run `php artisan db:seed` to seed the tables
 5. Run `npm install -g gulp bower` to install to build system and client package manager
@@ -22,17 +39,13 @@ A good PHP development environment is [Homestead](http://laravel.com/docs/5.1/ho
 
 ---
 
+### Manual
+
+---
+
+The manual can be found here: [Manual](/docs/manual.md).
+
 ### API Routes
-
-#### GET /api/sections
-
-This shows all the sections of the API.
-The sections consist of multiple questions.
-
-#### GET /api/sections/id
-
-Gives the specific information of the section.
-
 
 #### GET /api/questions
 
