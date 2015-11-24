@@ -182,7 +182,56 @@ As you can see, this is mostly hardcoded for now, so for additional multi-floor 
 If you want to add a solar panel, which is the second option for example, to the second floor with the first rooftype, this filename would look like this:
 
     public/assets/s1f2r1-solar2.svg
+    
+The template used for all images can be found in [docs/assets/AllTiles2.ai](assets/AllTiles2.ai) or you can base new illustrations off the .svg files found in **public/assets/**
 
+
+## Calculating the Ecolabel
+
+---
+
+In the current version, the is no real ecolabel calculation. All the scores are stored in the database for all of the different residences, and these scores can be pulled via the API, but there is no real math behind it.
+
+Ideally, you want to calculate the score on the Laravel Back End side, preferably in the **app/Http/Controllers/ResidenceController.php**, after a user has completed the questionnaire. This score can then be saved along with the residence, for which the questionnaire was filled out for, in the database.
+
+As it stands now, the application retrieves all the responses for a given residence (on the Tips page), and does the calculalations all on the Front End side (in the **public/js/controllers/tipCtrl.js** file), which are then shown on the Tips page (**resources/views/tips.blade.php**). 
+
+## Application flow and processes called
+
+---
+
+Most pages are built with the help of 3 parts:  
+- The Blade template (found in resources/views/)
+- The Angular Controller (Front End controller, found in public/js/controllers/)
+- The Laravel Controller (Back End controller, found in app/Http/Controllers/)
+
+### Homepage/Map
+
+View: resources/views/**map.blade.php** (with inline JS to generate the map)  
+Laravel Controller: app/Http/Controllers/**MapController.php**  
+
+### Search for location
+
+POST to app/Http/Controllers/**MapController.php@location**  
+Attempts to find the adress in the http://www.govmaps.eu/arcgis/rest/services/ICL/ICL_Energielabelatlas/MapServer database.  
+Returns the long, lat, and other adress details.
+
+### Questionnaire
+
+If an adress has been found, the user can choose to continue to the Questionnaire.
+
+View: resources/views/**questionnaire.blade.php**  
+Angular Controller: public/js/controllers/**mainCtrl.js**  
+Laravel Controllers: app/Http/Controllers/**ResidenceController.php** (to store the answers with the correct residence)  
+Laravel Controllers: app/Http/Controllers/**QuestionController.php** (to retrieve questions from the database)  
+
+### Tips page
+
+After completing the Questionnaire, users are taken to the Tips page, where they can see an overview of their answers, and personalised tips based on these answers. (personalised tips NYI)
+
+View: resources/views/**tips.blade.php**  
+Angular Controller: public/js/controllers/**tipCtrl.js**  
+Laravel Controller: app/Http/Controllers/**ResidenceController.php**  
 
 
 ## Important application file structure (Back End)
@@ -225,7 +274,7 @@ If you want to add a solar panel, which is the second option for example, to the
     - controllers/ (folder containing the AngularJS controllers)
       - **mainCtrl.js** (controller used in the questionnaire view)
       - **tipCtrl.js** (controller used in the tips view)
-    - **plugin/** (folder containing the extra plugins such as LeafletSRI and LeafletWMS)
+      - **plugin/** (folder containing the extra plugins: Proj4Leaflet, Leaflet.ESRI and Leaflet.WMS)
   - **app.js** (base AngularJS module is defined here, loaded on all views that use AngularJS)
 - resources/
   - views/
